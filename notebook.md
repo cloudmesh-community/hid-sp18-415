@@ -1,6 +1,7 @@
 ===
+
 Logistic
-===
+
 * 01/15/18 Watched video on Course Management
 * 01/18/18 Watched video on Cloud and Big Data
 * 01/23/18 Watched video on REST services
