@@ -1,5 +1,4 @@
 ===
-
 Logistic
 
 * 01/15/18 Watched video on Course Management
