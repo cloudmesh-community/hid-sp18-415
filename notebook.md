@@ -27,4 +27,4 @@ Online Meeting
 * 01/13/18 Attended Zoom meeting with Gregor
 * 01/27/18 Attended Zoom meeting with Gregor and instructor Vibatha
 * 01/28/18 Attended Zoom meeting with instructor Tyler
-* 01/30/18 Attended Zoom meeting with Gregor 
+* 01/30/18 Attended Zoom meeting with Gregor (great meeting)
