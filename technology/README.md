@@ -55,4 +55,7 @@ Before you commit, delete the following files that are should be in your directo
     abstract-xms.tex
 
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> a76d47e7a576fb5c0eed7f3f9a36499b135f7d50
