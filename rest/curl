@@ -1,0 +1,3 @@
+$ curl -H "Content-Type:application/json" -X Post -d'{"sysname":"Windows","osystem":"64bit","memory":"8.37 available","processor":"intel Corei7","diskspace":"free 366GB"}' http://127.0.0.1:5000/myplatform/
+
+
