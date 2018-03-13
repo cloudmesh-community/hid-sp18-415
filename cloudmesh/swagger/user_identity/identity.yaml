@@ -1,0 +1,76 @@
+swagger: '2.0'
+info:
+  version: 0.0.1
+  title: User Identity
+  description: >-
+    A swagger service to get service user identity using swagger-2.0
+    specification
+  termsOfService: 'http://swagger.io.terms/'
+  contact:
+    name: Cloudmesh-Community-hid-sp18-415
+    email: janumudvari@github.com
+  license:
+    name: Apache 2.0
+    url: 'http://www.apache.org/licenses/LICENSE-2.0.html'
+host: 'localhost:8080'
+basePath: /cloudmesh/identity/
+schemes:
+  - http
+consumes:
+  - application/json
+produces:
+  - application/json
+tags:
+  - name: Identity
+    description: Retrieve user identity
+paths:
+  /Identity:
+    get:
+      summary: User identification
+      description: >-
+        Return user identity based on username, password, firstname, lastname
+        
+      operationId: find_identity_username_password_get
+      parameters:
+        - in: query
+          name: username
+          description: username as a user identity
+          required: true
+          type: string
+        - in: query
+          name: password
+          description: password of a user
+          required: true
+          type: string
+        - in: query
+          name: firstname
+          description: firstname of the user
+          required: true
+          type: string
+        - in: query
+          name: lastname
+          description: lastname of teh user
+          required: true
+          type: string
+      responses:
+        '200':
+          description: successful output
+          schema:
+            $ref: '#/definitions/UserIdentity'
+definitions:
+  UserIdentity:
+    type: object
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+      firstname:
+        type: string
+      lastname:
+        type: string
+    required:
+      - username
+      - password
+      - firstname
+      - lastname
