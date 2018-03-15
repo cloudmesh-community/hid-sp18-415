@@ -27,10 +27,7 @@ paths:
   /Identity:
     get:
       summary: User identification
-      description: >-
-        Return user identity based on username, password, firstname, lastname
-        
-      operationId: find_identity_username_password_get
+      description: 'Return user identity'
       parameters:
         - in: query
           name: username
@@ -39,17 +36,7 @@ paths:
           type: string
         - in: query
           name: password
-          description: password of a user
-          required: true
-          type: string
-        - in: query
-          name: firstname
-          description: firstname of the user
-          required: true
-          type: string
-        - in: query
-          name: lastname
-          description: lastname of teh user
+          description: user password
           required: true
           type: string
       responses:
@@ -65,12 +52,7 @@ definitions:
         type: string
       password:
         type: string
-      firstname:
-        type: string
-      lastname:
-        type: string
     required:
       - username
       - password
-      - firstname
-      - lastname
+
