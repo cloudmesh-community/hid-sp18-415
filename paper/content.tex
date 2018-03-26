@@ -1,10 +1,10 @@
-% status: 90
+% status: 100 
 % chapter: TBD
 
 \title{Heroku Cloud Platform}
 
 
-\author{Gregor von Laszewski}
+\author{Janaki Mudvari Khatiwada}
 \affiliation{%
   \institution{Indiana University}
   \city{Bloomington} 
@@ -24,14 +24,14 @@ need of web-based services and their applications. These applications and
 services are  used across various sectors such as commerce, business, 
 internet of things, entertainment, research and development and day to day 
 consumer needs. Cloud computing provides a medium where services and 
-applications can be developed, deployed and managed over the web or internet.
+applications can be developed, deployed and managed over the web.
 This means they run as per clients need while their needed infrastructures 
-(hardware and software) and resources are hosted on other platforms. heroku,
+(hardware and software) and resources are hosted on other platforms. Heroku,
  a cloud based service provider provides developers a platform to implement 
 locally developed applications to be hosted in a cloud based servers and 
 virtual containers.It depends on Amazon Web Services for the infrastructure 
 it needs to run its applications while developers do not have to worry about
- data management servers and containers. This paper discusses features and
+ data management, servers and containers. This paper discusses features and
  applications of heroku cloud platform.
 \end{abstract}
 
@@ -44,90 +44,92 @@ it needs to run its applications while developers do not have to worry about
 
 \section{Introduction}
 
-Cloud computing provides platforms, infrastructures and resources (databases)
+ Cloud computing provides platforms, infrastructures and resources (databases)
  and their storage to the clients and developers. Heroku is a cloud platform 
-that provides its services for application development, their management and
- deployment in a scalable manner. Scalable in the sense that if the app has 
-heavy traffic that is more people are using it at the same time, Heroku can 
-adjust the number of needed servers to manage and host the app. So it is 
-basically platform as a service (PaaS) provider build on Amazon's 
-Elastic Compute Cloud (EC2). ``It is a dynamic distributed runtime 
-environment''~\cite{www-devcenter-heroku}. As a PaaS cloud service, heroku
+ that provides its services for application development, their management and
+ deployment in a scalable manner. Scalable in the sense that if the app gets 
+ heavy web traffic, Heroku can 
+ adjust the number of needed servers to manage and host the app. It is 
+ basically a platform as a service (PaaS) provider build on Amazon's 
+ Elastic Compute Cloud (EC2). ``It has a dynamic distributed runtime 
+ environment''~\cite{hid-sp18-415-www-devcenter-heroku}. It was founded in  2007 and has been
+ in development since then~\cite{hid-sp18-415-www-wikipedia-org}.
+ As a PaaS cloud service, heroku
  offers operating systems, hardware, servers and databases to application 
-developers. This certainly helps developers to save time and money as they do
+ developers. This certainly helps developers to save time and money as they do
  not have to focus on acquiring the necessary infrastructures like setting up 
-a server and installing software. While ruby, java, php, python and node are 
-the core languages supported by heroku, it supports variety 
- of other languages such as Scala and Clojure through buildpacks. These 
-buildpacks are third party add--ons. These add--ons provide features such as
+ a server and installing software. While ruby, java, php, python and node are 
+ the core languages supported by heroku, it supports variety 
+ of other languages such as Scala and Clojure through buildpacks~\cite{hid-sp18-415-www-wikipedia-org}.
+ These buildpacks are third party add--ons. These add--ons provide features such as
  databases, continuous integration, performance monitoring and others as such. 
-They can be attached to the servers. It allows developers to locally build 
-source codes with the language that they prefer or are familiar with and then
+ They can be attached to the servers. It allows developers to locally build 
+ source codes with the language that they prefer or are familiar with and then
  deploy them through git push. Applications are stateless that means they can 
 be reused. App deployments are managed through Git, which does version control
- and code management~\cite{www-how-heroku-works}. Codes can also be ``deployed 
-from GitHub or Continuous Integration (CI) systems''~\cite{www-heroku-com}.   
+ and code management~\cite{hid-sp18-415-www-how-heroku-works}. Codes can also be ``deployed 
+from GitHub or Continuous Integration (CI) systems''~\cite{hid-sp18-415-www-heroku-com}.   
 Apps are run in virtual containers called Dynos. Number of dynos or virtual 
 servers are preset in the application but they can be instantly scaled to 
-support the needs~\cite{www-how-heroku-works}. Postgres or PostgreSQL is a 
-built in database service of heroku available to developers~\cite{www-heroku-com}.
+support the needs~\cite{hid-sp18-415-www-how-heroku-works}. Postgres or PostgreSQL is a 
+built in database service of heroku available to developers~\cite{hid-sp18-415-www-heroku-com}.
 
 \subsection{Continuous Integration System}
-Heroku Continuous Integration (CI) system is a ``visual, low configuration
+ Heroku Continuous Integration (CI) system is a ``visual, low configuration
  test runner that runs app in automatically created disposable 
-heroku apps~\cite{www-heroku-ci}. 
+ heroku apps~\cite{hid-sp18-415-www-heroku-ci}. 
 
 
 \subsection{Dynos}
-Heroku dynos, building blocks of heroku app, are virtual linux containers or
+ Heroku dynos, building blocks of heroku app, are virtual linux containers or
  virtual servers which run developers specified source codes once they are 
-deployed~\cite{www-heroku-dynos}. These containers provide necessary environment
- to run an application.  Unless specified, app will start running with one dyno 
-with  web request but they can be scaled depending upon the volume of the 
-application traffic~\cite{www-heroku-dynos}. Dynos' RAM, CPU  and  can be 
-configured based on application's needs. From Heroku Dashboard or CLI these 
-dynos can be scaled manually up and down or also can be 
-autoscaled~\cite{www-heroku-dynos}. Each dyno has a set of 
-``unique properties and performance characterstics''~\cite{www-heroku-dynos}, 
-based on which they are categorized as ``Free, Hobby, Performance and Standard 
-dynos''~ \cite{www-devcenter-dynos}. The dyno manager is responsible for keeping
-dynos run automatically, that is restart and stop~\cite{www-devcenter-dynos}. 
-Temporary dynos called One-off dynos with their input/output can be created 
-and attached to local terminal~\cite{www-how-heroku-works}. They will be 
-terminated due to inactivity or session termination.
+ deployed~\cite{hid-sp18-415-www-heroku-dynos}. These containers provide necessary environment
+ to run an application. Unless specified, app will start running with one dyno 
+ with  web request but they can be scaled depending upon the volume of the 
+ application traffic~\cite{hid-sp18-415-www-heroku-dynos}. Number of Dynos, their RAM and 
+ CPU can be 
+ configured based on application's needs. From Heroku Dashboard or Command Line
+ Interface (CLI) these dynos can be scaled manually up and down or also can be 
+ autoscaled~\cite{hid-sp18-415-www-heroku-dynos}. Each dyno has a set of 
+ ``unique properties and performance characterstics''~\cite{hid-sp18-415-www-heroku-dynos}, 
+ based on which they are categorized as ``Free, Hobby, Performance and Standard 
+ dynos''~\cite{hid-sp18-415-www-devcenter-dynos}. Heroku Enterprise has private dynos.
 
-Dyno manager manages all dynos across all applications on Heroku. Its job is 
+ Based on the configurations they are further
+ categorized as Web dyno, Worker or One--off dynos. Dynos that receive HTTP
+ requests are web dynos and are of web process type in procfile. Worker dynos
+ are responsible for background jobs and queuing~\cite{hid-sp18-415-www-devcenter-dynos}.
+ ``Temporary dynos called One-off dynos with their input/output can be created 
+ and attached to local terminal''~\cite{hid-sp18-415-www-how-heroku-works}. They will be 
+ terminated due to inactivity or session termination.
+ The dyno manager is responsible for keeping
+ dynos run automatically, that is restart and stop~\cite{hid-sp18-415-www-devcenter-dynos}. 
+ Dyno manager manages all dynos across all applications on Heroku. Its job is 
 to make sure dynos are running and cycled at least once a day, detects fault
  in applications or hardware, awaken sleeping application when it receives http
-requests ~\cite{www-how-heroku-works}. 
+requests~\cite{hid-sp18-415-www-how-heroku-works}. 
 
 
-
- 
-
-
-
-
-\section{Architecture}
-Heroku's architecture on the developer's side include, source codes, a list of
+ \section{Architecture}
+ Heroku's architecture on the developer's side include, source codes, a list of
  dependencies listed in text file called requirements.txt and a Procfile. Its
  architecture is stateless and scalable both horizontally and vertically.
  Vertical scaling is done by increasing the memory of running dyno and
  horizontal scaling is increasing the number of dynos as required by
- the traffic~\cite{www-python-heroku-com}. Scaling can be done either
+ the traffic~\cite{hid-sp18-415-www-python-heroku-com}. Scaling can be done either
  through commmand line interface (CLI) by writing a command or simply
  by sliding a bar on Heroku dashboard. 
 
  A Procfile is a text file with 
  process command to be used to start running the code. Process commands might
  be web command if a developer wants to run application in the web or queue
- command to include app in queue before deploying~\cite{www-how-heroku-works}.
+ command to include app in queue before deploying~\cite{hid-sp18-415-www-how-heroku-works}.
  Procfile basically specifies the process to be executed.
  Source code can be presented in developer's preferred language.
 Next step, application deployment to Heroku is done preferably using Git
  as remote repository associates with local git  once app is created in Heroku.
  But locally developed applications can also be send to Heroku using Github,
- Dropbox or through API~\cite{www-how-heroku-works}.Heroku Platform starts 
+ Dropbox or through API~\cite{hid-sp18-415-www-how-heroku-works}.Heroku Platform starts 
  building source application once it receives application source codes. This 
  process also called buildpacks which retrieves app dependencies as specified 
  in the source and generates output in the form of compiled code. Then along
@@ -140,23 +142,23 @@ Next step, application deployment to Heroku is done preferably using Git
  systems. Configuration variables or config vars are environment variables
  that have specific information about environment differences. They are
  separately located from slug. They are dynamic, so can be changed or
- customized independently from source code~\cite{www-how-heroku-works}.
+ customized independently from source code~\cite{hid-sp18-415-www-how-heroku-works}.
 
-Heroku executes applications in a dyno, proloaded with slug and configuration
+ Heroku executes applications in a dyno, proloaded with slug and configuration
  variables, by running a command specified in Procfile. Developers can specify
  number of dynos needed to run the app in the procfile. In other words,
  specification of dynos in the procfile allows application scaling. When new
  version of applications are deployed all of the currently executing dynos are
  killed and newer ones replace them preserving the existing dyno
- formation~\cite{www-how-heroku-works}. HTTP routers distribute application
+ formation~\cite{hid-sp18-415-www-how-heroku-works}. HTTP routers distribute application
  requests across all running web dynos. 
 
 
 \section{Python API on Heroku}
-Python is one of the in-built languages supported on Heroku cloud platform.
+ Python is one of the in-built languages supported on Heroku cloud platform.
  APIs and apps build on any version of python can be deployed to heroku.
 
-To create a simple web API using Flask framework ,initiate the process
+ To create a simple web API using Flask framework, initiate the process
  by creating a git repository then under this directory specify needed
  dependencies like python version, flask, and gunicorn. If these
  dependencies are not available locally, first create a virtualenv or
@@ -168,22 +170,22 @@ To create a simple web API using Flask framework ,initiate the process
  want to run in our API. Now initialize local git repository and  add and
  commit these locally created files into git repository.
 
-Command Heroku create will create herokuapp.com. Now locally created API
+ Command Heroku create will create herokuapp.com. Now locally created API
  can be deployed to Heroku by command git push Heroku master. Curl command
  can be issued to test newly created API or it can be tested in the web
  browser as well.
 
 
 \section{Heroku Use-Cases}
-Heroku seems to be affordable to a start-up business, since it is a platform
+ Heroku seems to be affordable to a start-up business, since it is a platform
  as a service cloud system. Companies do not have to worry about managing
  servers, upgrading the system to make it scalable and dealing with security
  issues. These add up to be an extra costs for businesses. 
 
-Ivisalign is a user-end app for Align Technology Inc. which is a provider of
+ Ivisalign is a user-end app for Align Technology Inc., which is a provider of
  invisible orthodontic products to the customers. ``Along with invisalign.com app,
- other consumer--facing apps of Align Inc. are run on
- Heroku''~\cite{www-customers-heroku-com}. This allows developers to focus
+ other consumer--facing apps of Align Inc., are run on
+ Heroku''~\cite{hid-sp18-415-www-customers-heroku-com}. This allows developers to focus
  on apps instead of managing the infrastructures, so that the app can be quickly
  updated on a daily basis with minimal changes in the source code. Heroku also
  allows to scale up HTTP requests and process simply through dashboard or a
@@ -192,10 +194,10 @@ Ivisalign is a user-end app for Align Technology Inc. which is a provider of
  Apartment List is another app built on Heroku and available for iPhone and
  Android. Apartment List Inc., allows customers to search apartments by
  connecting them to a consolidated listing of available apartments in
- their area~\cite{www-customers-heroku-com}. This app is location based
+ their area~\cite{hid-sp18-415-www-customers-heroku-com}. This app is location based
  and requires real time results. It serves customers by helping them search
  neighborhoods based on street address and displays an entire inventory for
- every neighborhood in real time~\cite{www-customers-heroku-com}.
+ every neighborhood in real time~\cite{hid-sp18-415-www-customers-heroku-com}.
  `` Apartment List has a team that works on their native app, a team
  that works on their web app and a team that works on the in-house rental
  specialist app  all running on Heroku''~\cite{www-customers-heroku-com}.
@@ -204,11 +206,11 @@ Ivisalign is a user-end app for Align Technology Inc. which is a provider of
  Center (OATRC), Australia. This center provides a platform for autism related
  research activities, evidence--based intervention programs, training
  opportunities and collaboration between stakeholders in Australia and
- overseas~\cite{www-customers-heroku-com}. Based on comprehensive research and
+ overseas~\cite{hid-sp18-415-www-customers-heroku-com}. Based on comprehensive research and
  the data gathered from trained nurses to study behaviors in children aged 
  between 12 to 24 months, predictive algorithm for Autism Syndrome Detection (ASD)
  was developed into ASDetect app. This app was launched in 
- 2016~\cite{www-customers-heroku-com} and runs on Heroku platform. Now parents
+ 2016~\cite{hid-sp18-415-www-customers-heroku-com} and runs on Heroku platform. Now parents
  from all around the world can track observations of behavior of their child.
  This app allows parents to look for risk factors and needed guidance.
 
@@ -219,14 +221,24 @@ Ivisalign is a user-end app for Align Technology Inc. which is a provider of
 
 \section{limitations}
  Free dyno has 512 MB of RAM and as the name suggests it is free. Free dyno
- sleeps for 6 hours~\cite{www-how-heroku-works}. For others like performance
+ sleeps for 6 hours~\cite{hid-sp18-415-www-how-heroku-works}. For others like performance
  and standard dynos RAM is higher but they may not be free. If dynos need to
  be scaled both in numbers and RAM size there is extra charge for
- that~\cite{www-how-heroku-works}. HTTP requests on heroku has 30 seconds
+ that~\cite{hid-sp18-415-www-how-heroku-works}. HTTP requests on heroku has 30 seconds
  window for some kind of response. Once it responds a 50 seconds window is
- rolled up in both client side and server side~\cite{www-devcenter-herokulimits}.
+ rolled up in both client side and server side~\cite{hid-sp18-415-www-devcenter-herokulimits}.
 
 \section{Conclusion}
+
+ Heroku cloud platform, a Paas solution allows developers focus on building 
+ applications rather than spending time, energy and money on infrastructures
+ needed for application. While apps are developed locally they are deployed
+ through github. And rest of the processes will be managed by Heroku. Its
+ multi language support makes it portable. It provides free server called dyno
+ for minimal application. However, as per higher traffic dynos can be scaled but
+ developers might have to pay for increased number of dynos. Companies can run
+ their apps in heroku without having to worry about investing in infrastructures
+ and managing them.
 
 
 \begin{acks}
