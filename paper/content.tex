@@ -1,5 +1,5 @@
 % status: 100 
-% chapter: TBD
+% chapter: Paas
 
 \title{Heroku Cloud Platform}
 
@@ -17,25 +17,30 @@
 % The default list of authors is too long for headers}
 \renewcommand{\shortauthors}{J. M. Khatiwada}
 
-
+&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
 \begin{abstract}
-Growing demands for internet of things and other smart devices increase
-need of web-based services and their applications. These applications and
-services are  used across various sectors such as commerce, business, 
-internet of things, entertainment, research and development and day to day 
-consumer needs. Cloud computing provides a medium where services and 
-applications can be developed, deployed and managed over the web.
-This means they run as per clients need while their needed infrastructures 
-(hardware and software) and resources are hosted on other platforms. Heroku,
- a cloud based service provider provides developers a platform to implement 
-locally developed applications to be hosted in a cloud based servers and 
-virtual containers.It depends on Amazon Web Services for the infrastructure 
-it needs to run its applications while developers do not have to worry about
+ Growing demands for internet of things and other smart devices increase
+ need of web-based services and their applications. These applications and
+ services are  used across various sectors such as trade, commerce, business,
+ government, entertainment, research and development and day to day
+ consumer needs. Cloud computing provides a medium where services and
+ applications can be developed, deployed and managed over the web. These 
+ services and appplications might need bigger (hardware) and different types
+ (software) of infrastructures for data management, storage, backend data 
+ access and data anlaysis. Cloud computing customers use cloud services
+ for certain price or free if available so that they do not have to invest
+ on the needed infrastructures. This means they deploy their applications and
+ services while their needed infrastructures (hardware and software) and
+ resources are hosted on other platforms. Heroku, a cloud based service provider
+ provides developers a platform to implement
+ locally developed applications to be hosted in a cloud based servers or
+ virtual containers.It depends on Amazon Web Services for the infrastructure
+ it needs to run its applications while developers do not have to worry about
  data management, servers and containers. This paper discusses features and
  applications of heroku cloud platform.
 \end{abstract}
 
-\keywords{e516, hid-sp18-415, Heroku, Cloud Computing}
+\keywords{e516, hid-sp18-415, Cloud Computing, Heroku, Dyno}
 
 
 \maketitle
@@ -45,14 +50,16 @@ it needs to run its applications while developers do not have to worry about
 \section{Introduction}
 
  Cloud computing provides platforms, infrastructures and resources (databases)
- and their storage to the clients and developers. Heroku is a cloud platform 
- that provides its services for application development, their management and
- deployment in a scalable manner. Scalable in the sense that if the app gets 
- heavy web traffic, Heroku can 
- adjust the number of needed servers to manage and host the app. It is 
- basically a platform as a service (PaaS) provider build on Amazon's 
- Elastic Compute Cloud (EC2). ``It has a dynamic distributed runtime 
- environment''~\cite{hid-sp18-415-www-devcenter-heroku}. It was founded in  2007 and has been
+ and their storage to the clients and developers. Based on type of services
+ cloud provides they can be called \textit{Infrastructure as Service (Iaas),
+ Plastform as Service ( Paas) or Software as Service (Saas)}. Heroku is a Paas
+ provider that provides its services for application development, their management and
+ deployment in a scalable manner. Scalable in the sense that if app gets 
+ heavy web traffic, Heroku can increase the number of needed servers to manage
+ and host the app. It is basically a platform as a service (PaaS) provider
+ build on Amazon's Elastic Compute Cloud (EC2). ``It has a dynamic distributed
+ runtime environment''~\cite{hid-sp18-415-www-devcenter-heroku}. It was founded
+ in  2007 and has been
  in development since then~\cite{hid-sp18-415-www-wikipedia-org}.
  As a PaaS cloud service, heroku
  offers operating systems, hardware, servers and databases to application 
@@ -60,30 +67,34 @@ it needs to run its applications while developers do not have to worry about
  not have to focus on acquiring the necessary infrastructures like setting up 
  a server and installing software. While ruby, java, php, python and node are 
  the core languages supported by heroku, it supports variety 
- of other languages such as Scala and Clojure through buildpacks~\cite{hid-sp18-415-www-wikipedia-org}.
+ of other languages such as Scala and Clojure through 
+ buildpacks~\cite{hid-sp18-415-www-wikipedia-org}.
  These buildpacks are third party add--ons. These add--ons provide features such as
  databases, continuous integration, performance monitoring and others as such. 
  They can be attached to the servers. It allows developers to locally build 
  source codes with the language that they prefer or are familiar with and then
  deploy them through git push. Applications are stateless that means they can 
-be reused. App deployments are managed through Git, which does version control
- and code management~\cite{hid-sp18-415-www-how-heroku-works}. Codes can also be ``deployed 
-from GitHub or Continuous Integration (CI) systems''~\cite{hid-sp18-415-www-heroku-com}.   
-Apps are run in virtual containers called Dynos. Number of dynos or virtual 
-servers are preset in the application but they can be instantly scaled to 
-support the needs~\cite{hid-sp18-415-www-how-heroku-works}. Postgres or PostgreSQL is a 
-built in database service of heroku available to developers~\cite{hid-sp18-415-www-heroku-com}.
+ be reused. App deployments are managed through Git, which does version control
+ and code management~\cite{hid-sp18-415-www-how-heroku-works}. Codes can also
+ be ``deployed from GitHub or Continuous Integration (CI) 
+ systems''~\cite{hid-sp18-415-www-heroku-com}.   
+ Apps are run in virtual containers called Dynos. Number of dynos or virtual 
+ servers are preset in the application but they can be instantly scaled to 
+ support the needs~\cite{hid-sp18-415-www-how-heroku-works}. Redis and Postgres
+ or PostgreSQL are database services of heroku available through 
+ add--ons~\cite{hid-sp18-415-www-heroku-com}.
 
 \subsection{Continuous Integration System}
  Heroku Continuous Integration (CI) system is a ``visual, low configuration
  test runner that runs app in automatically created disposable 
- heroku apps~\cite{hid-sp18-415-www-heroku-ci}. 
+ heroku apps~\cite{hid-sp18-415-www-heroku-ci}.
 
 
 \subsection{Dynos}
  Heroku dynos, building blocks of heroku app, are virtual linux containers or
  virtual servers which run developers specified source codes once they are 
- deployed~\cite{hid-sp18-415-www-heroku-dynos}. These containers provide necessary environment
+ deployed~\cite{hid-sp18-415-www-heroku-dynos}. These containers provide necessary
+ environment
  to run an application. Unless specified, app will start running with one dyno 
  with  web request but they can be scaled depending upon the volume of the 
  application traffic~\cite{hid-sp18-415-www-heroku-dynos}. Number of Dynos, their RAM and 
@@ -126,7 +137,7 @@ requests~\cite{hid-sp18-415-www-how-heroku-works}.
  command to include app in queue before deploying~\cite{hid-sp18-415-www-how-heroku-works}.
  Procfile basically specifies the process to be executed.
  Source code can be presented in developer's preferred language.
-Next step, application deployment to Heroku is done preferably using Git
+ Next step, application deployment to Heroku is done preferably using Git
  as remote repository associates with local git  once app is created in Heroku.
  But locally developed applications can also be send to Heroku using Github,
  Dropbox or through API~\cite{hid-sp18-415-www-how-heroku-works}.Heroku Platform starts 
@@ -157,20 +168,27 @@ Next step, application deployment to Heroku is done preferably using Git
 \section{Python API on Heroku}
  Python is one of the in-built languages supported on Heroku cloud platform.
  APIs and apps build on any version of python can be deployed to heroku.
+ Following steps are referenced from Heroku documentation. 
 
  To create a simple web API using Flask framework, initiate the process
  by creating a git repository then under this directory specify needed
- dependencies like python version, flask, and gunicorn. If these
+ dependencies like python version, Flask, and Gunicorn. Gunicorn
+ enables concurrent  http requests. If these
  dependencies are not available locally, first create a virtualenv or
- pyenv then perform pip install--dependency name. Thse dependencies are
- then stored in requirements.txt file. To make sure the dependencies do
+ pyenv then perform pip install--dependency name (e.g., gunicorn). 
+ These dependencies are
+ then stored in requirements.txt file by running  command pip install 
+ requirements.txt. To make sure the dependencies do
  not get changed while deploying app in Heroku, we can run pip freeze
- requirements.txt. Then create a simple web API using flask under the same
- directory. Next step is creating a Procfile specifying which command we
- want to run in our API. Now initialize local git repository and  add and
- commit these locally created files into git repository.
+ requirements.txt command. Then create a simple web API using flask under the same
+ directory. Next step is creating a \textit{Procfile}. Procfile is a text file
+ that has information
+ about the application process. Process might be web or queue or others depending on 
+ what we want to run in our API. Now initialize local git repository with command
+ git init and git add, git commit and git push add these locally created files 
+ into git repository.
 
- Command Heroku create will create herokuapp.com. Now locally created API
+ Command, Heroku create will create \textit{herokuapp.com}. Now locally created API
  can be deployed to Heroku by command git push Heroku master. Curl command
  can be issued to test newly created API or it can be tested in the web
  browser as well.
@@ -200,7 +218,7 @@ Next step, application deployment to Heroku is done preferably using Git
  every neighborhood in real time~\cite{hid-sp18-415-www-customers-heroku-com}.
  `` Apartment List has a team that works on their native app, a team
  that works on their web app and a team that works on the in-house rental
- specialist app  all running on Heroku''~\cite{www-customers-heroku-com}.
+ specialist app  all running on Heroku''~\cite{hid-sp18-415-www-customers-heroku-com}.
 
  Another example this paper likes to showcase is Olga Tennison Autism Research
  Center (OATRC), Australia. This center provides a platform for autism related
