@@ -17,7 +17,7 @@
 % The default list of authors is too long for headers}
 \renewcommand{\shortauthors}{J. M. Khatiwada}
 
-&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&&
+
 \begin{abstract}
  Growing demands for internet of things and other smart devices increase
  need of web-based services and their applications. These applications and
@@ -85,12 +85,14 @@
  add--ons~\cite{hid-sp18-415-www-heroku-com}.
 
 \subsection{Continuous Integration System}
+
  Heroku Continuous Integration (CI) system is a ``visual, low configuration
  test runner that runs app in automatically created disposable 
  heroku apps~\cite{hid-sp18-415-www-heroku-ci}.
 
 
 \subsection{Dynos}
+
  Heroku dynos, building blocks of heroku app, are virtual linux containers or
  virtual servers which run developers specified source codes once they are 
  deployed~\cite{hid-sp18-415-www-heroku-dynos}. These containers provide necessary
@@ -122,6 +124,7 @@ requests~\cite{hid-sp18-415-www-how-heroku-works}.
 
 
  \section{Architecture}
+
  Heroku's architecture on the developer's side include, source codes, a list of
  dependencies listed in text file called requirements.txt and a Procfile. Its
  architecture is stateless and scalable both horizontally and vertically.
@@ -166,6 +169,7 @@ requests~\cite{hid-sp18-415-www-how-heroku-works}.
 
 
 \section{Python API on Heroku}
+
  Python is one of the in-built languages supported on Heroku cloud platform.
  APIs and apps build on any version of python can be deployed to heroku.
  Following steps are referenced from Heroku documentation. 
@@ -195,6 +199,7 @@ requests~\cite{hid-sp18-415-www-how-heroku-works}.
 
 
 \section{Heroku Use-Cases}
+
  Heroku seems to be affordable to a start-up business, since it is a platform
  as a service cloud system. Companies do not have to worry about managing
  servers, upgrading the system to make it scalable and dealing with security
@@ -237,7 +242,8 @@ requests~\cite{hid-sp18-415-www-how-heroku-works}.
  on Heroku.
 
 
-\section{limitations}
+\section{Limitations}
+
  Free dyno has 512 MB of RAM and as the name suggests it is free. Free dyno
  sleeps for 6 hours~\cite{hid-sp18-415-www-how-heroku-works}. For others like performance
  and standard dynos RAM is higher but they may not be free. If dynos need to
