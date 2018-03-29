@@ -1,7 +1,7 @@
 # Heroku
-==========
+
 ## Overview
-===========
+
  * Platform as service(Paas)
  * Build on top of Amazon Web Services(AWS,EC2)
    Heroku servers are hosted on AWS. Heroku manages the servers in use while developers deploy their APIs. 
@@ -11,9 +11,9 @@
    Developers write their API locally and can deploy to Heroku through git or GitHub. 
 
 ## Features
-===========
+
  * Languages 
-  * Node, Ruby, PHP, Go, Scala, Python, Java, Clojure are the languages supported by Heroku 
+   - Node, Ruby, PHP, Go, Scala, Python, Java, Clojure are the languages supported by Heroku 
     but it supports any other languages through Add-Ons and Buildpacks.This feature make it language friendly.  
  * Heroku Connect
  * Heroku Enterprise
@@ -27,7 +27,7 @@
    -            [!32-bit installer](https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-x86.exe)
    -
 ## Architecture
-==============
+
 
 ## API with Python Flask on Heroku
  
