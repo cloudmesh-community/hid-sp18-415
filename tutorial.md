@@ -18,9 +18,9 @@
  * Database services
    - Postgres and Redis are supported
  * Heroku Connect
-   - Data in Postgres can be synchronized to the salesforce databases
+   - Data in Postgres can be synchronized to the database of Salesforce organizations
  * Heroku Enterprise
-   - It provides private spaces and access control features to enterprises to manage api resources,users and development
+   - It provides private spaces and access control features to large enterprises to collaborate and manage api resources,users and      development
  * Heroku Teams
    - Collaboration platform for application management and development.
  * Dynos
@@ -39,8 +39,10 @@
      $ sudo snap install heroku --classic  for Ubuntu snap
      
      ```
-   - To verify CLI installation command [heroku version] can be run
-   
+   - To verify CLI installation type command...
+   ```sh
+   $ heroku version
+   ```
 
 ## Architecture
  * 
