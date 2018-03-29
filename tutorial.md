@@ -45,9 +45,22 @@
    ```
 
 ## Architecture
- * 
- * 
-## API with Python Flask on Herok
+ 
+ * [Here in Detail](https://github.com/cloudmesh-community/hid-sp18-415/blob/master/paper/content.tex/)
+ * Source codes developed in local terminal 
+ * requirements.txt file with all the dependencies
+ * Procfile a text file with info on application process types
+ * Slug, bundle of source code, requirements.txt and Procfile 
+ * Config Vars, environmental variables
+ * Release, combination of slug and config vars
+ * Dyno manager
+ * Add-ons
+ * Heroku logs
+ * HTTP routing 
+
+## API with Python Flask on Heroku
+
+ * to be done
  
 
 
