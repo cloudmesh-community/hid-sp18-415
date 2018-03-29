@@ -25,7 +25,7 @@
    - On macos (https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli.pkg)
    - On Windows [!64-bit installer] (https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-x64.exe)
    -            [!32-bit installer](https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-x86.exe)
-   -
+   - Ubuntu/Debian run command 
 ## Architecture
 
 
