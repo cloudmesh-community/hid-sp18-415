@@ -3,7 +3,7 @@
 ## Overview
 
  * Platform as a service(Paas)
- * Build on top of Amazon Web Services(AWS,EC2)
+ * Build on top of Amazon Web Services(AWS, EC2)
    Heroku servers are hosted on AWS. 
  * Partly open source and partly commercial
  * Owned by Salesforce 
@@ -40,7 +40,7 @@
      $ sudo snap install heroku --classic  for Ubuntu snap
      
      ```
-   - To verify CLI installation type command...
+   - To verify CLI installation, type
    ```sh
    $ heroku version
    ```
