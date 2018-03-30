@@ -31,8 +31,7 @@
    Download Heroku CLI to create and manage apps directly from the terminal.
    - On macos (https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli.pkg)
    - On Windows 
-      [!64-bit installer] (https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-x64.exe/)
-      
+      [!64-bit installer](https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-x64.exe/)      
       [!32-bit installer](https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-x86.exe/)
       
    - Ubuntu/Debian run following command
