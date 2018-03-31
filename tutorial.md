@@ -2,8 +2,8 @@
 
 ## Overview
 
- * Platform as service(Paas)
- * Build on top of Amazon Web Services(AWS,EC2)
+ * Platform as a service(Paas)
+ * Build on top of Amazon Web Services(AWS, EC2)
    Heroku servers are hosted on AWS. 
  * Partly open source and partly commercial
  * Owned by Salesforce 
@@ -29,24 +29,24 @@
  * Heroku Elements
  * Command line Interface(CLI)
    Download Heroku CLI to create and manage apps directly from the terminal.
-   - On macos (https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli.pkg)
+   - On macos [Link](https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli.pkg)
    - On Windows 
-      [!64-bit installer] (https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-x64.exe)
-      [!32-bit installer](https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-x86.exe)
+      [!64-bit installer](https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-x64.exe/)      
+      [!32-bit installer](https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-x86.exe/)
+      
    - Ubuntu/Debian run following command
      ```sh
      $ wget -qO- https://cli-assets.heroku.com/install-ubuntu.sh | sh 
      $ sudo snap install heroku --classic  for Ubuntu snap
      
      ```
-   - To verify CLI installation type command...
+   - To verify CLI installation, type
    ```sh
    $ heroku version
    ```
 
-## Architecture
+## Architecture [Here in Detail](https://github.com/cloudmesh-community/hid-sp18-415/blob/master/paper/content.tex/)
  
- * [Here in Detail](https://github.com/cloudmesh-community/hid-sp18-415/blob/master/paper/content.tex/)
  * Source codes developed in local terminal 
  * requirements.txt file with all the dependencies
  * Procfile a text file with info on application process types
