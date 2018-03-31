@@ -31,7 +31,7 @@
    Download Heroku CLI to create and manage apps directly from the terminal.
    - On macos [Link](https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli.pkg)
    - On Windows 
-      [!64-bit installer](https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-x64.exe/)      
+      [!64-bit installer](https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-x64.exe/) 
       [!32-bit installer](https://cli-assets.heroku.com/heroku-cli/channels/stable/heroku-cli-x86.exe/)
       
    - Ubuntu/Debian run following command
@@ -60,8 +60,8 @@
 
 ## API with Python Flask on Heroku (incomplete, working on it)
 
- * Download flask, gunicorn in pyenv or virtualenv in local terminal
- * Define or create app.py file, e.g., 
+ * Download flask and gunicorn, virtualenv or pyenv if we don't have setup already 
+ * Define or create info.py file, e.g., 
       ```sh
       from flask import Flask
 
@@ -75,14 +75,19 @@
       if __name__ =="__main__":
          app.run()
      ```
- * Run pip install requirements.txt to install dependencies
+ * Run pip freeze > requirements.txt to install dependencies
  * Define Procfile with process specification, web is a process in this example
      ```sh
-     web: gunicorn app:app
+     web: gunicorn info:app
      ```
- * Type command create Heroku that will create herokuapp.com and run gitinit to initiate it in the repository
- * Git Push will push app.py, requiements.txt and Procile as a bundle called ``slug''.
- * 
+ * Heroku CLI should be installed
+ * Run heroku login and login to heroku account to autenticate, if you do not have one, create one
+ * Go to app directory
+ * Run gitinit to initiate a git repository
+ * Git add, git commit and Push will push info.py, requirements.txt and Procile
+ * Heroku now compiles info.py, Procfile and the dependencies from requirements.txt into a bundle called ``slug''
+ * Type command create Heroku that will create herokuapp.com and also gives us the url of our app
+ * run heroku open, opens app url
 
  
 
