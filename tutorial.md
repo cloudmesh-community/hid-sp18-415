@@ -58,9 +58,32 @@
  * Heroku logs
  * HTTP routing 
 
-## API with Python Flask on Heroku
+## API with Python Flask on Heroku (incomplete, working on it)
 
- * to be done
+ * Download flask, gunicorn in pyenv or virtualenv in local terminal
+ * Define or create app.py file, e.g., 
+      ```sh
+      from flask import Flask
+
+      app = Flask(__name__)
+
+      @app.route('/')
+
+      def index():
+         return "do some magic!"
+
+      if __name__ =="__main__":
+         app.run()
+     ```
+ * Run pip install requirements.txt to install dependencies
+ * Define Procfile with process specification, web is a process in this example
+     ```sh
+     web: gunicorn app:app
+     ```
+ * Type command create Heroku that will create herokuapp.com and run gitinit to initiate it in the repository
+ * Git Push will push app.py, requiements.txt and Procile as a bundle called ``slug''.
+ * 
+
  
 
 
