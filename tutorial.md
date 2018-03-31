@@ -70,7 +70,7 @@
       @app.route('/')
 
       def index():
-         return "do some magic!"
+         return "my app info!"
 
       if __name__ =="__main__":
          app.run()
