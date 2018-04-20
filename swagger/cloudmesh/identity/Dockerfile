@@ -11,7 +11,7 @@ WORKDIR /hid-sp18-417/swagger/cloudmesh/identity
 RUN wget https://oss.sonatype.org/content/repositories/releases/io/swagger/swagger-codegen-cli-2.3.1/swagger-codegen-cli-2.3.1.jar
 
 RUN pip install -r requirements.txt
-ENTRYPOINT [python]
+ENTRYPOINT [python 3.6.4]
 
 EXPOSE 8080
 
