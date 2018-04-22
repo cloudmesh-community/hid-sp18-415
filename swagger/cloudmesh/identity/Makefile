@@ -9,12 +9,12 @@ SERVICE_NAME=cloudmesh_identity_service
 swagger_codegen=java -jar swagger-codegen-cli.jar
 
 all: service start
-     @echo "service started"
+	@echo "service started"
 
 
 fetch:
 	wget https://oss.sonatype.org/content/repositories/releases/io/swagger/ 
-swagger-codegen-cli/2.3.1/swagger-codegen-cli-2.3.1.jar
+	swagger-codegen-cli/2.3.1/swagger-codegen-cli-2.3.1.jar
 	-O swagger-codegen-cli.jar
 
 generate:
@@ -28,8 +28,8 @@ generate:
 	@echo "copied"
 
 requirements:
-        pip install -r requirements.txt; python setup.py install
-        cd server/identity/flaskConnexion; pip install -r requirements$
+	pip install -r requirements.txt; python setup.py install
+	cd server/identity/flaskConnexion; pip install -r requirements$
 
 run:
 	cd server/identity/flaskConnexion/ &&\
@@ -44,5 +44,5 @@ clean:
 	rm -rf server/
 	
 container:
-         sudo docker build -t cloudmesh-identity .
-         sudo docker run -p 8080:8080 cloudmesh-identity 
+	sudo docker build -t cloudmesh-identity .
+	sudo docker run -p 8080:8080 cloudmesh-identity 
