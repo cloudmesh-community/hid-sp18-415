@@ -12,13 +12,13 @@ def predict():
     if request.method == 'POST':
         try:
             data = request.get_json()
-            engine_size = float(data["engine_size"])
+            engine_size = int(data["engine_size"])
 
             lin_reg = joblib.load("./linear_regression_model.pkl")
         except ValueError:
             return jsonify("Please enter a number.")
 
-        return jsonify(lin_reg.predict(years_of_experience).tolist())
+        return jsonify(lin_reg.predict(hwy_mpg).tolist())
 
 
 @app.route("/retrain", methods=['POST'])
