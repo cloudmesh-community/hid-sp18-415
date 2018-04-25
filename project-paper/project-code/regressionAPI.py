@@ -21,39 +21,6 @@ def predict():
         return jsonify(lin_reg.predict(hwy_mpg).tolist())
 
 
-@app.route("/retrain", methods=['POST'])
-def retrain():
-    if request.method == 'POST':
-        data = request.get_json()
-
-        try:
-            training_set = joblib.load("./training_data.pkl")
-            training_labels = joblib.load("./training_labels.pkl")
-
-            df = pd.read_json(data)
-
-            df_training_set = df.drop(["hwy_mpg"], axis=1)
-            df_training_labels = df["hwy_mpg"]
-
-            df_training_set = pd.concat([training_set, df_training_set])
-            df_training_labels = pd.concat([training_labels, df_training_labels])
-
-            new_lin_reg = LinearRegression()
-            new_lin_reg.fit(df_training_set, df_training_labels)
-
-            os.remove("./linear_regression_model.pkl")
-            os.remove("./training_data.pkl")
-            os.remove("./training_labels.pkl")
-
-            joblib.dump(new_lin_reg, "linear_regression_model.pkl")
-            joblib.dump(df_training_set, "training_data.pkl")
-            joblib.dump(df_training_labels, "training_labels.pkl")
-
-            lin_reg = joblib.load("./linear_regression_model.pkl")
-        except ValueError as e:
-            return jsonify("Error when retraining - {}".format(e))
-
-        return jsonify("Retrained model successfully.")
 
 
 @app.route("/currentDetails", methods=['GET'])
