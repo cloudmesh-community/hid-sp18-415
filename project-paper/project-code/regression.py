@@ -8,14 +8,8 @@ import requests
 
 df = pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vS37MqRL0SL1twLDjX5vFw-WqICPgBW0ev_4KMR2kzzcMAWkKNQo_wnbr_QqcXXuFgBXX8K-Amogx-9/pub?output=csv")
 
-
-df.isnull().values.any()
 train_set, test_set = train_test_split(df, test_size=0.2, random_state=42)
 df_copy = train_set.copy()
-
-print (df_copy.describe())
-print (df_copy.corr())
-
 
 train_set_full = train_set.copy()
 
@@ -24,12 +18,13 @@ train_set = train_set.drop(["hwy_mpg"], axis=1)
 train_labels = df_copy["hwy_mpg"]
 
 # creating model with training data
-
+train_set_full = train_set.copy()
+train_set = train_set.drop(["hwy_mpg"], axis=1)
 lin_reg = LinearRegression()
 
 lin_reg.fit(train_set, train_labels)
 
-hwy_mpg_pred = lin_reg.predict(10)
+hwy_mpg_pred = lin_reg.predict(test-labels)
 
 hwy_mpg_pred
 
