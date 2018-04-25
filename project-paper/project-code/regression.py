@@ -6,7 +6,7 @@ from sklearn.metrics import r2_score
 from sklearn.externals import joblib
 import requests
 
-df = pd.read_csv("./cardata.csv")
+df = pd.read_csv("https://docs.google.com/spreadsheets/d/e/2PACX-1vS37MqRL0SL1twLDjX5vFw-WqICPgBW0ev_4KMR2kzzcMAWkKNQo_wnbr_QqcXXuFgBXX8K-Amogx-9/pub?output=csv")
 
 
 df.isnull().values.any()
