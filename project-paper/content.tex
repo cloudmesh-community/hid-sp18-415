@@ -1,7 +1,6 @@
-% status: 0
+% status: 60%
 % chapter: TBD
-
-\title{Big Data for Edge Computing}
+\title{Simple Linear Regression API with Flask}
 
 
 
@@ -21,34 +20,91 @@
 
 
 \begin{abstract}
-  This paper provides a simple demonstration of performing cloud computing in
-  locally installed servers, raspberry pi clusters.
+  Python's flask application requires minimal application for application
+  development. Flask make use of backend data as a resource to support an
+  application running on the server. This project discusses development
+  and deployment of REST api with python flask. This flask api runs linear
+  regression model, an example of machine learning using python package
+  SciKit--learn. For the purpose car data set from UCI machine learning
+  data repository is being used. Before this a regression model for the
+  data has to be build to make sure that this model best describes the 
+  relationship between variables, in this case engine size and highway
+  miles per gallon. Based on this model new data set can be tested to make 
+  to make prediction. Then regression results is used as the endpoint 
+  in flask api.
+   
 \end{abstract}
 
-\keywords{e516, hid-sp18-415, raspberry pi,cluster, edge computing }
+\keywords{e516, hid-sp18-415, Flask Api, Cloud Computing, Simple Linear Regression }
 
 
 \maketitle`
 
 \section{Introduction}
-  Edge computing provides a simple solution of scalable, flexible, lightweight
-  architecture and facilitates computation to the edge of the cloud rather than
-  reaching for larger data centers and servers in the cloud. Raspberry Pi is a
-  small, single-board device or computer that can be miodified into a platform
-  for data
-  storage, computation and deployment of applications near the edge of the cloud.
-  They can
-  be clustered to form a interoperable containers that can deploy applications near
-  the edge. These devices are low cost (30 dollars for each pi), low power
-  devices.
-  
-  In this project, we are going to build a 3 Raspberry Pi cluster to emulate a small
-  scale edge computing platform. Then develop a
-  restul web services application so that we can deploy them into the cluster.
-  As a part of the
-  project we are also going to deploy our application into Heroku so that we can
-  benchmark whole process. Heroku is a Platform as a Service (PaaS) cloud
-  application platform~\cite{www-heroku-com}.
+ 
+\section{Simple Linear Regression}
+  Just to provide a brief overview of why simple linear regression is
+  chosen for the project, a brief introduction about it would be
+  appropriate .Linear Regression is a statistical data analysis tool
+  which describes the effect of one variable also called independent
+  variable on dependent variables. In case of simple linear regression
+  there is only one dependent variable with one independent variable
+  just like in multiple regression. Our purpose of running this project
+  is to create a line of best fit model build a model that can be used
+  for prediction. In this case prediction of mpg based on engine size
+  of the vehicle. The line of best fit is described by the
+  formula \[y = a + bx\] where a is coefficient or y intercept and b is
+  slope for the line. In this case formula for line of best fit is
+ \[hwy\_mpg = yintercept + slope.enginesize\] 
+\section{Methods}
+  Data selection, cleaning and preprocessing, building a local
+  environment, building a linear regression model using SciKit-learn,
+  designing a REST api with Flask and deploying  the api are the main
+  processes of this project. They are explained below under each bullet
+  points:
+\begin{itemize}
+    \item Automobile Data Set, \textit{https://archive.ics.uci.edu/ml/
+          machine--learning-databases/autos/imports-85.data}, from UCI
+          Machine learning data repository is selected. It was created
+          in 19 May, 1987 by Jefferey C. Schlimmer \cite{uci-com}. The
+          data set is multivariate with 25 attributes. Since the project
+          is more focused on designing and deploying a simple linear
+          regression api as a demonstration of implementing Flask service,
+          only two attributes, `engine size' and `highway miles per gallon'
+          are used. Rest of the attributes are dropped. The goal of the
+          project is to build a best fit prediction model for highway mpg
+          based on engine size. The data set have several missing instances
+ as well which are removed as a clean up process. Cleaned data is stored in
+ google Dropox as a csv   file so that it can be easily fetched into the
+ application. It is located in \textit{https://www.dropbox.com/s/986566hudfytl8h/cardata.csv?dl=0}.
+    \item Ubuntu 16.04 is the operating system used for whole project.
+  A virtual environment pyenv is created in Ubuntu 16.04 where python 3
+ environment is build. Since this project requires different python
+ packages to fetch and manipulate data and run linear regression and
+ then build a flask api. Using pip install package name, packages Flask,
+ pandas, numpy, scipy and SciKit--learn are installed. Besides these
+ packages, python packages matplotlib and seaborn are installed as they
+ are required to create a regression plot and and plot line of best fit. 
+    \item Next is building a model from the data set. This is done by
+ running python's machine learning application. There are two types of
+ machine learning, supervised and unsupervised learning. Supervised
+ Machine learning is learning properties of data set (training data set)
+ and applying them to the test data set. This machine learning algorithm
+ is also called supervised learning. Regression problem in Scikit--learn
+ is supervised machine learning. In this case predicting highway mpg for
+ the new data set based on engine size is the regression problem.
+    
+    Regression analysis or building a best fit model for our data set is
+   discussed in detail under section Analysis and Algorithm. Now the data
+   set is splitted into two sets one used for defining an regression 
+   equation that best fits the data. Once regression equation is defined
+   that is value for slope and coefficient of constant is calculated.   
+   Source codes are located in github repository \cite{}.
+    \item The final process is writting a flask api which can be run to call
+ endpoints performing different CRUD rest methods.
+\end{itemize}    
+
+\section{Analysis and Algorithms}
   
 \section{Conclusion}
 
