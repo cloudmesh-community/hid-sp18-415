@@ -42,12 +42,20 @@
 \maketitle`
 
 \section{Introduction}
+  Flask is a web application framework ``based on the Werkzeug WSGI (Web Server
+  Gateway Interface) toolkit and Jinja2 template engine''~\cite{hid-sp18-415-flask}.
+  Being an interface between web server and and web applications, 
+  ``it implements requests and response objects'' while jinja2 render web page
+  by combining template and data source~\cite{hid-sp18-415-flask}. 
   Flask api framework requires minimal framework for RESTful web services.
   Rest services is an architectural style web services which use HTTP protocol
   to establish communication between client and server during each service
   request.
   Being lightweight and scalable, flask is chosen as a good option for 
-  developing the RESTful apis.  The main purpose of this paper is
+  developing the RESTful apis. While flask does not have built--in support for 
+  database handling and validation support, these functionality can be added as
+  extensions to the application~\cite{hid-sp18-415-flask}.
+  The main purpose of this paper is
   to create a regression model for car data set and then create a web service
   with flask. The model is intended to
   predict highway miles per gallon based on engine size of the vehicle.
@@ -214,15 +222,13 @@
  
 \section{Conclusion}
 
-REST services with flask is simple to develop and deploy. This project build a
+REST services with flask is simple to develop and deploy. 
+This project build a
 simple regression model from car dataset. Regression plot and r square
 value has been used to explain variance in miles per gallon (our dependent
 variable). The model details is later used as 
-a path for flask application. Also based on the model new data points can be used 
-for future prediction. While this prediction model api is intended to run in 
-heroku cloud platform, this has been quite a challenge at this time. This can 
-be a future work and author is motivated to continuously work on it and 
-accomplish what has been intended. 
+a path for flask application. Also based on the model new data points can be 
+used for future prediction.  
 
 
 
