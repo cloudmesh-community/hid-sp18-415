@@ -16,10 +16,11 @@ RUN pip install pandas, numpy, scipy, scikit-learn
 # RUN git clone git://github.com/yyuu/pyenv.git .pyenv
 # RUN git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
 # RUN pyenv install 3.6.4
+
+RUN pip install -r requirements.txt
 COPY . /app
 
 WORKDIR /app
-
 
 EXPOSE 8080
 #CMD ["python regressionAPI.py"]
