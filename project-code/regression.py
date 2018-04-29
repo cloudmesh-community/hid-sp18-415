@@ -18,13 +18,11 @@ train_set = train_set.drop(["hwy_mpg"], axis=1)
 train_labels = df_copy["hwy_mpg"]
 
 # creating model with training data
-train_set_full = train_set.copy()
-train_set = train_set.drop(["hwy_mpg"], axis=1)
 lin_reg = LinearRegression()
 
 lin_reg.fit(train_set, train_labels)
 
-hwy_mpg_pred = lin_reg.predict(test-labels)
+hwy_mpg_pred = lin_reg.predict(37)
 
 hwy_mpg_pred
 
@@ -36,13 +34,9 @@ joblib.dump(train_set, "training_data.pkl")
 joblib.dump(train_labels, "training_labels.pkl")
 
 #predict API
-eng_size = {"engine_size': 8}
+eng_size = {"engine_size": 27}
 response = requests.post("{}/predict".format(BASE_URL), json = eng_size)
 
 response.json()
 
-# current details API
 
-response = requests.get("{}/currentDetails".format(BASE_URL))
-
-response.json()
