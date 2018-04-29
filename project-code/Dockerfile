@@ -1,7 +1,6 @@
 FROM ubuntu:16.04
 # FROM python:3-onbuild
 
-
 RUN  apt-get update -q
 RUN  apt-get install -qy \
         build-essential \
