@@ -3,7 +3,7 @@ FROM python:3-onbuild
 
 RUN  apt-get update -q
 RUN  apt-get install -qy \
- build-essential \
+        build-essential \
 	python-dev \
 	python-pip \
 	libssl-dev \
@@ -12,15 +12,15 @@ RUN  apt-get install -qy \
 	libreadline-dev \
 	libsqlite3-dev \
 
-RUN pip install pandas, numpy, scipy, scikit-learn
+RUN sudo apt-get install pandas, numpy, scipy, scikit-learn
 # RUN git clone git://github.com/yyuu/pyenv.git .pyenv
 # RUN git clone https://github.com/yyuu/pyenv-virtualenv.git ~/.pyenv/plugins/pyenv-virtualenv
 # RUN pyenv install 3.6.4
 
-RUN pip install -r requirements.txt
 COPY . /app
 
 WORKDIR /app
+RUN pip install -r requirements.txt
 
 EXPOSE 8080
-#CMD ["python regressionAPI.py"]
+CMD ["python regressionAPI.py"]
