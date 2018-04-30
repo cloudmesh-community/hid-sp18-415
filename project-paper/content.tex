@@ -1,4 +1,4 @@
-% status: 100
+% status: 100 (still editing as suggested by professor)
 % chapter: TBD
 \title{Simple Linear Regression API with Flask}
 
@@ -73,7 +73,8 @@
   service cloud platform. This also has a minimal deployment needs.
   It requires openining an account in heroku.com, then download heroku
   command line interface(CLI). Then run heroku login from CLI and
-  and create an app. This is discussed in more detail under ``methods'' section.
+  and create an app. This is discussed in more detail under \emp{methods} 
+  section.
   
  
  
@@ -90,8 +91,8 @@
   of the vehicle. The line of best fit is described by the
   formula \[y = a + bx\] where a is coefficient or y intercept and b is
   slope for the line. In this case formula for prediction model or
-  regression is given below, where hwy\_mpg is y variable and
-  engine\_size is x variable.
+  regression is given below, where \verb|hwy\_mpg| is y variable and
+  \verb|engine\_size| is x variable.
   \[hwy\_mpg = yintercept + slope.enginesize\] 
 \section{Methods}
   Data selection, cleaning and preprocessing, building a local
@@ -100,31 +101,33 @@
   locally and also deploying it into heroku are the main
   processes of this project. They are explained below under each bullet
   points:
-\begin{itemize}
-    \item Automobile Data Set, \textit{https://archive.ics.uci.edu/ml/
-          machine--learning-databases/autos/imports--85.data}, from UCI
-          Machine learning data repository is selected. It was created
-          on 19 May, 1987 by Jefferey C. Schlimmer \cite{uci-com}. The
-          data set is multivariate with 25 attributes. Since the project
-          is focused on designing and deploying a simple linear
-          regression api as a demonstration of implementing Flask service,
-          only two attributes, `engine size' and `highway miles per gallon'
-          are used. Rest of the attributes are dropped. The goal of the
-          project is to build a best fit prediction model for highway mpg
-          based on engine size. The data set have several missing instances
- as well which are removed as a clean up process. Cleaned data is stored in
- Dropox as a csv   file so that it can be easily fetched into the
- application. The data set is located at 
+
+   Automobile Data Set, \textit{https://archive.ics.uci.edu/ml/
+   machine--learning-databases/autos/imports--85.data}, from UCI
+   Machine learning data repository is selected. It was created
+   on 19 May, 1987 by Jefferey C. Schlimmer~\cite{hid-sp18-415-uci-com}. The
+   data set is multivariate with 25 attributes. Since the project
+   is focused on designing and deploying a simple linear
+   regression api as a demonstration of implementing Flask service,
+   only two attributes, `engine size' and `highway miles per gallon'
+   are used. Rest of the attributes are dropped. The goal of the
+   project is to build a best fit prediction model for highway mpg
+   based on engine size. The data set have several missing instances
+   as well which are removed as a clean up process. Cleaned data is stored in
+   Dropox as a csv   file so that it can be easily fetched into the
+   application. The data set is located at 
  \textit{https://www.dropbox.com/s/986566hudfytl8h/cardata.csv?dl=0}.
-    \item Ubuntu 16.04 is the operating system used for whole project.
-  A virtual environment pyenv is created in Ubuntu 16.04 where python 3
+  
+  Ubuntu 16.04 is the operating system used for whole project.
+ A virtual environment pyenv is created in Ubuntu 16.04 where python 3
  environment is built. Besides, flask, this project requires different python
  packages to fetch and manipulate data and run the linear regression and
  then build a flask api. Using pip install package name, packages Flask,
  pandas, numpy, scipy and SciKit--learn are installed. Besides these
  packages, python packages matplotlib and seaborn are also installed as they
  are required to create a regression plot and plot line of best fit. 
-    \item Next is building a model from the data set. This is done by
+ 
+ Next is building a model from the data set. This is done by
  running python's machine learning application. There are two types of
  machine learning, supervised and unsupervised learning. Supervised
  Machine learning is learning properties of data set (training data set)
@@ -134,14 +137,15 @@
  the new data set based on engine size is the regression problem. Data
  is split into train set and test set in 2:8 ratio.
     
-    Regression analysis or building a best fit model for our data set is
+   Regression analysis or building a best fit model for our data set is
    discussed in detail under section Analysis and Algorithm. Now the data
    set is split into two sets one used for defining a regression 
    equation. This equation is going to be the prediction model for data.
    Once regression equation is defined
    that is value for slope and intercept is calculated.   
    Source codes are located in github repository~\cite{hid-sp18-415-regression}.
-    \item The final process is writing a flask api which can be run to call 
+   
+ The final process is writing a flask api which can be run to call 
  endpoints using `GET' and `POST' methods. In this project predict is the
  endpoint for POST method and and current details is the endpoint for GET
  method. Then this application is deployed into heroku cloud platform from
@@ -150,10 +154,10 @@
  deployed through git push. In order to deploy to heroku it needs `Procfile'
  with the process it needs to run and requirements.txt or Pipfile that has lists 
  of dependencies needed for the app. Since this api needs to run regression, all
- the needed packages numpy, scipy, pandas and scikit-learn are configured from 
+ the needed packages numpy, scipy, pandas and scikit--learn are configured from 
  'heroku config buildpacks'. Then run `git remote', `git add .' to add files,  
  `git commit' and `git push heroku master'.
-\end{itemize}    
+    
 
 \section{Analysis and Algorithms}
   The cleaned data set has two attributes \textit{engine size} and
@@ -169,17 +173,17 @@
    called `train\_labels by pulling  series``hwy\_mpg'' from 
    train--set~\cite{hid-sp18-415-regression}. Then `LinearRegression' 
    class is created and fit 
-   method is called by \[lin_reg = LinearRegression()\] 
-   \[lin_reg.fit(train_set, train_labels)\]. Now we calculate intercept and
+   method is called by \[lin\_reg = LinearRegression()\] 
+   \[lin\_reg.fit(train\_set, train\_labels)\]. Now we calculate intercept and
   slope our model. These values are used to create model formula
   as discussed in linear regression section above. Then predict function is
   called  by passing series test\_set which returns an array of predicted 
-  values \cite{regression}. This model can be checked by calling print function
-  for hwy\_mpg\_pred
+  values~\cite{hid-sp-18-415-regression}. This model can be checked by calling
+  print function for hwy\_mpg\_pred
   and test\_set series and compare values for each series. Another method to
   check how significant the model is by calculating the value for r--square 
   which in this case is lin\_reg score by running following algorithm.  
-  \[lin\_reg.score(test\_set, test\_set\_full[``hwy_mpg''])\]
+  \[lin\_reg.score(test\_set, test\_set\_full[``hwy\_mpg''])\]
   The value of this score ranges between 0 to 1. R square is called coefficient
   of determination. R square means that all the data points of the model falls
   perfectly on regression line. If value is more towards 0 then the regression 
@@ -208,14 +212,14 @@
  variance in highway mpg. To compare real highway miles per gallon values with 
  predicted values, print function is
  run for test\_set and hwy\_mpg\_pred set. The results are quite similar as
- shown in this figure \ref{p:HwyMpg Compare}. While not all values can not be seen  
+ shown in this figure~\ref{p:HwyMpg Compare}. While not all values can not be seen  
  in this the whole output can be found in github~\cite{hid-sp18-415-analysis}.
  It shows that values are pretty close.
  Another way model significance is checked by plotting regression plot from
- from model over scatter plot from test set \ref{p:HwyMpg Compare}. The plot shows 
+ from model over scatter plot from test set~\ref{p:HwyMpg Compare}. The plot shows 
  the regression line or line of best fit passes right through most of the data
  points. There are few outliers. The regression model can also be compared with 
- the original scatterplot \ref{p:scatterplot} which fairly show how data points
+ the original scatterplot~\ref{p:scatterplot} which fairly show how data points
  are aligned.  
  
 \section{Future Work} 
@@ -229,10 +233,10 @@ three files.
  \item A Dockerfile that helps with building an image and installing all the 
  dependencies or requirements for running Flask api in Heroku. To deploy Flask 
  api using Dockerile, container has to be registered into heroku by command
- \verb| heroku container:login|~\cite{hid-sp18-415-heroku}. Then build image,
+ \verb|heroku container:login|~\cite{hid-sp18-415-heroku}. Then build image,
  push to Container Registry by command 
  \verb|heroku container:push web| and open the app in the browser with
- \verb|heroku open| ~\cite{hid-sp18-415-heroku}.
+ \verb|heroku open|~\cite{hid-sp18-415-heroku}.
  
  \item A Procfile that tells heroku what process to run. Here is an example of 
  Procfile \verb|web: gunicorn appname:app|. In this example web is a process
