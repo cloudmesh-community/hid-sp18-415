@@ -1,4 +1,4 @@
-% status: 97
+% status: 100
 % chapter: TBD
 \title{Simple Linear Regression API with Flask}
 
@@ -32,7 +32,7 @@
   relationship between variables, in this case engine size and highway
   miles per gallon. Based on this model new data set can be tested to make 
   prediction. Then regression results is used as the endpoint 
-  in flask api.
+  in flask api. This service is then tested by running dockerfile.
    
 \end{abstract}
 
@@ -96,8 +96,8 @@
 \section{Methods}
   Data selection, cleaning and preprocessing, building a local
   environment, building a linear regression model using SciKit--learn,
-  designing a REST api with Flask and running locally and deploying
-  it into heroku are the main
+  designing a REST api with Flask. The application is then tested by running 
+  locally and also deploying it into heroku are the main
   processes of this project. They are explained below under each bullet
   points:
 \begin{itemize}
@@ -218,8 +218,32 @@
  the original scatterplot \ref{p:scatterplot} which fairly show how data points
  are aligned.  
  
-  
+\section{Future Work} 
+
+This service is tested using DOckerfile and Makefile and is able to fetch
+output locally. In the future it can be deployed into cloud platform heroku.
+As this project requires python's data analysis and machine-learning packages 
+besides it can be deployed using Dockerfile. For Deployment to Heroku, we need 
+three files.
+\begin{itemize}
+ \item A Dockerfile that helps with building an image and installing all the 
+ dependencies or requirements for running Flask api in Heroku. To deploy Flask 
+ api using Dockerile, container has to be registered into heroku by command
+ \verb| heroku container:login|~\cite{hid-sp18-415-heroku}. Then build image,
+ push to Container Registry by command 
+ \verb|heroku container:push web| and open the app in the browser with
+ \verb|heroku open| ~\cite{hid-sp18-415-heroku}.
  
+ \item A Procfile that tells heroku what process to run. Here is an example of 
+ Procfile \verb|web: gunicorn appname:app|. In this example web is a process
+ which tells heroku to run in the web and gunicorn handles requests and appname 
+ is name of our application which in our case is 
+ regressionAPI~\cite{hid-sp-18-415-regresssionapi}.
+ \item Python files or application files.
+ \item Requirements.txt file
+ 
+ \end{itemize}
+
 \section{Conclusion}
 
 REST services with flask is simple to develop and deploy. 
@@ -228,7 +252,10 @@ simple regression model from car dataset. Regression plot and r square
 value has been used to explain variance in miles per gallon (our dependent
 variable). The model details is later used as 
 a path for flask application. Also based on the model new data points can be 
-used for future prediction.  
+used for future prediction. The application is successsfully run in localhost
+with command python regressionAPI.py. The whole project has been dockerized in
+a docker container using Dockerfile. 
+
 
 
 
