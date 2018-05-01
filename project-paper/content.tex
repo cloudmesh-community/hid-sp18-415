@@ -20,20 +20,19 @@
 
 
 \begin{abstract}
-  Python's flask application requires minimal application for
-  application development. Flask make use of backend data as a
-  resource to support an application running on the server. This
-  project discusses development and deployment of REST api with python
-  flask. This flask api gets predict info based on regression model
-  created from car dataset. Once flask app runs successfully, it is
-  then deployed to Heroku, a platform as a service cloud platform. For
-  the purpose car data set from UCI machine learning data repository
-  is being used. Before this, a regression model for the data has to
-  be built to make sure that this model best describes the
+  Python's flask application requires minimal application for application
+  development. Flask make use of backend data as a resource to support an
+  application running on the server. This project discusses development
+  and deployment of REST api with python flask. This flask api gets predict
+  info based on regression model created from car dataset. Once flask app runs 
+  successfully, it is then deployed to Heroku, a platform as a service 
+  cloud platform. For the purpose car data set from UCI machine learning
+  data repository is being used. Before this, a regression model for the
+  data has to be built to make sure that this model best describes the 
   relationship between variables, in this case engine size and highway
-  miles per gallon. Based on this model new data set can be tested to
-  make prediction. Then regression results is used as the endpoint in
-  flask api. This service is then tested by running dockerfile.
+  miles per gallon. Based on this model new data set can be tested to make 
+  prediction. Then regression results is used as the endpoint 
+  in flask api. This service is then tested by running dockerfile.
    
 \end{abstract}
 
@@ -43,188 +42,169 @@
 \maketitle
 
 \section{Introduction}
-
-Flask is a web application framework ``based on the Werkzeug WSGI (Web
-Server Gateway Interface) toolkit and Jinja2 template
-engine''~\cite{hid-sp18-415-flask}.  Being an interface between web
-server and and web applications, ``it implements requests and response
-objects'' while jinja2 render web page by combining template and data
-source~\cite{hid-sp18-415-www-flask}.  Flask api framework requires
-minimal framework for RESTful web services.  Rest services is an
-architectural style web services which use HTTP protocol to establish
-communication between client and server during each service request.
-Being lightweight and scalable, flask is chosen as a good option for
-developing the RESTful apis. While flask does not have built--in
-support for database handling and validation support, these
-functionality can be added as extensions to the
-application~\cite{hid-sp18-415-www-flask}.  The main purpose of this
-paper is to create a regression model for car data set and then create
-a web service with flask. The model is intended to predict highway
-miles per gallon based on engine size of the vehicle.  Scikit-learn is
-used to run simple linear regression and build the prediction
-model. This model is going to be the resource in flask api. Using GET
-and POST methods to call endpoints. GET method fetch resource info
-while POST method creates a new resource. Resources and requests for
-API can be in different data format but json format is easy to
-understand and flask has in--built support for this data format. So
-our resource will be our json object stored in key--value pair.
+  Flask is a web application framework ``based on the Werkzeug WSGI (Web Server
+  Gateway Interface) toolkit and Jinja2 template engine''~\cite{hid-sp18-415-flask}.
+  Being an interface between web server and and web applications, 
+  ``it implements requests and response objects'' while jinja2 render web page
+  by combining template and data source~\cite{hid-sp18-415-www-flask}. 
+  Flask api framework requires minimal framework for RESTful web services.
+  Rest services is an architectural style web services which use HTTP protocol
+  to establish communication between client and server during each service
+  request.
+  Being lightweight and scalable, flask is chosen as a good option for 
+  developing the RESTful apis. While flask does not have built--in support for 
+  database handling and validation support, these functionality can be added as
+  extensions to the application~\cite{hid-sp18-415-www-flask}.
+  The main purpose of this paper is
+  to create a regression model for car data set and then create a web service
+  with flask. The model is intended to
+  predict highway miles per gallon based on engine size of the vehicle.
+  Scikit-learn is used to run simple linear regression and build the prediction
+  model. This model is going
+  to be the resource in flask api. Using GET and POST methods to call
+  endpoints. GET method fetch resource info while POST method creates
+  a new resource. Resources and requests for API can be in different data
+  format but json format
+  is easy to understand and flask has in--built support for this data format. So 
+  our resource will be our json object stored in key--value pair.
   
-Once flask api is succesfully run in localhost, the application is
-then deployed to heroku which is an open source platform as a service
-cloud platform. This also has a minimal deployment needs.  It requires
-openining an account in heroku.com, then download heroku command line
-interface (CLI). Then run heroku login from CLI and and create an
-app. This is discussed in more detail under \textit{methods} section.
+  Once flask api is succesfully run in localhost, the application is
+  then deployed to heroku which is an open source platform as a 
+  service cloud platform. This also has a minimal deployment needs.
+  It requires openining an account in heroku.com, then download heroku
+  command line interface (CLI). Then run heroku login from CLI and
+  and create an app. This is discussed in more detail under \textit{methods} 
+  section.
   
  
  
 \section{Simple Linear Regression}
-
-Just to provide a brief overview of why simple linear regression is
-chosen for the project, a brief introduction about it would be
-appropriate. Linear Regression is a statistical data analysis tool
-which describes the effect of one variable, also called independent
-variable, on dependent variable. In case of simple linear regression
-there is only one dependent variable with one independent variable.
-Our purpose of running this project is to create a line of best fit
-model to build a model that can be used for prediction. In this case
-prediction of mpg based on engine size of the vehicle. The line of
-best fit is described by the formula \[y = a + bx\] where a is
-coefficient or y intercept and b is slope for the line. In this case
-formula for prediction model or regression is given below, where
-\verb|hwy\_mpg| is y variable and \verb|engine\_size| is x variable.
+  Just to provide a brief overview of why simple linear regression is
+  chosen for the project, a brief introduction about it would be
+  appropriate. Linear Regression is a statistical data analysis tool
+  which describes the effect of one variable, also called independent
+  variable, on dependent variable. In case of simple linear regression
+  there is only one dependent variable with one independent variable.
+  Our purpose of running this project
+  is to create a line of best fit model to build a model that can be used
+  for prediction. In this case prediction of mpg based on engine size
+  of the vehicle. The line of best fit is described by the
+  formula \[y = a + bx\] where a is coefficient or y intercept and b is
+  slope for the line. In this case formula for prediction model or
+  regression is given below, where \verb|hwy\_mpg| is y variable and
+  \verb|engine\_size| is x variable.
   \[hwy\_mpg = yintercept + slope.enginesize\] 
-
 \section{Methods}
+  Data selection, cleaning and preprocessing, building a local
+  environment, building a linear regression model using SciKit--learn,
+  designing a REST api with Flask. The application is then tested by running 
+  locally and also deploying it into heroku are the main
+  processes of this project. They are explained below in details. 
 
-Data selection, cleaning and preprocessing, building a local
-environment, building a linear regression model using SciKit--learn,
-designing a REST api with Flask. The application is then tested by
-running locally and also deploying it into heroku are the main
-processes of this project. They are explained below in details.
-
-Automobile Data Set, \textit{https://archive.ics.uci.edu/ml/
-  machine--learning-databases/autos/imports--85.data}, from UCI
-Machine learning data repository is selected. It was created on 19
-May, 1987 by Jefferey C. Schlimmer~\cite{hid-sp18-415-uci-com}. The
-data set is multivariate with 25 attributes. Since the project is
-focused on designing and deploying a simple linear regression api as a
-demonstration of implementing Flask service, only two attributes,
-`engine size' and `highway miles per gallon' are used. Rest of the
-attributes are dropped. The goal of the project is to build a best fit
-prediction model for highway mpg based on engine size. The data set
-have several missing instances as well which are removed as a clean up
-process. Cleaned data is stored in Dropox as a csv file so that it can
-be easily fetched into the application. The data set is located at
-\textit{https://www.dropbox.com/s/986566hudfytl8h/cardata.csv?dl=0}.
+   Automobile Data Set, \textit{https://archive.ics.uci.edu/ml/
+   machine--learning-databases/autos/imports--85.data}, from UCI
+   Machine learning data repository is selected. It was created
+   on 19 May, 1987 by Jefferey C. Schlimmer~\cite{hid-sp18-415-uci-com}. The
+   data set is multivariate with 25 attributes. Since the project
+   is focused on designing and deploying a simple linear
+   regression api as a demonstration of implementing Flask service,
+   only two attributes, `engine size' and `highway miles per gallon'
+   are used. Rest of the attributes are dropped. The goal of the
+   project is to build a best fit prediction model for highway mpg
+   based on engine size. The data set have several missing instances
+   as well which are removed as a clean up process. Cleaned data is stored in
+   Dropox as a csv   file so that it can be easily fetched into the
+   application. The data set is located at 
+ \textit{https://www.dropbox.com/s/986566hudfytl8h/cardata.csv?dl=0}.
   
-Ubuntu 16.04 is the operating system used for whole project.  A
-virtual environment pyenv is created in Ubuntu 16.04 where python 3
-environment is built. Besides, flask, this project requires different
-python packages to fetch and manipulate data and run the linear
-regression and then build a flask api. Using pip install package name,
-packages Flask, pandas, numpy, scipy and SciKit--learn are
-installed. Besides these packages, python packages matplotlib and
-seaborn are also installed as they are required to create a regression
-plot and plot line of best fit.
+ Ubuntu 16.04 is the operating system used for whole project.
+ A virtual environment pyenv is created in Ubuntu 16.04 where python 3
+ environment is built. Besides, flask, this project requires different python
+ packages to fetch and manipulate data and run the linear regression and
+ then build a flask api. Using pip install package name, packages Flask,
+ pandas, numpy, scipy and SciKit--learn are installed. Besides these
+ packages, python packages matplotlib and seaborn are also installed as they
+ are required to create a regression plot and plot line of best fit. 
  
-Next is building a model from the data set. This is done by running
-python's machine learning application. There are two types of machine
-learning, supervised and unsupervised learning. Supervised Machine
-learning is learning properties of data set (training data set) and
-applying them to the test data set. This machine learning algorithm is
-also called supervised learning. Regression problem in Scikit--learn
-is supervised machine learning. In this case predicting highway mpg
-for the new data set based on engine size is the regression
-problem. Data is split into train set and test set in 2:8 ratio.
+ Next is building a model from the data set. This is done by
+ running python's machine learning application. There are two types of
+ machine learning, supervised and unsupervised learning. Supervised
+ Machine learning is learning properties of data set (training data set)
+ and applying them to the test data set. This machine learning algorithm
+ is also called supervised learning. Regression problem in Scikit--learn
+ is supervised machine learning. In this case predicting highway mpg for
+ the new data set based on engine size is the regression problem. Data
+ is split into train set and test set in 2:8 ratio.
     
-Regression analysis or building a best fit model for our data set is
-discussed in detail under section Analysis and Algorithm. Now the data
-set is split into two sets one used for defining a regression
-equation. This equation is going to be the prediction model for data.
-Once regression equation is defined that is value for slope and
-intercept is calculated.  Source codes are located in github
-repository~\cite{hid-sp18-415-regression}.
+  Regression analysis or building a best fit model for our data set is
+  discussed in detail under section Analysis and Algorithm. Now the data
+   set is split into two sets one used for defining a regression 
+   equation. This equation is going to be the prediction model for data.
+   Once regression equation is defined
+   that is value for slope and intercept is calculated.   
+   Source codes are located in github repository~\cite{hid-sp18-415-regression}.
    
-The final process is writing a flask api which can be run to call
-endpoints using `GET' and `POST' methods. In this project predict is
-the endpoint for POST method and and current details is the endpoint
-for GET method. Then this application is deployed into heroku cloud
-platform from CLI. Before deploying `heroku create app--name' is run
-to create an app within heroku. Then run `git init' to initiate a
-remote git repository, since app is deployed through git push. In
-order to deploy to heroku it needs `Procfile' with the process it
-needs to run and requirements.txt or Pipfile that has lists of
-dependencies needed for the app. Since this api needs to run
-regression, all the needed packages numpy, scipy, pandas and
-scikit--learn are configured from `heroku config buildpacks'. Then run
-`git remote', `git add' to add files, `git commit' and `git push
-heroku master'.
+ The final process is writing a flask api which can be run to call 
+ endpoints using `GET' and `POST' methods. In this project predict is the
+ endpoint for POST method and and current details is the endpoint for GET
+ method. Then this application is deployed into heroku cloud platform from
+ CLI. Before deploying `heroku create app--name' is run to create an app within
+ heroku. Then run `git init' to initiate a remote git repository, since app is 
+ deployed through git push. In order to deploy to heroku it needs `Procfile'
+ with the process it needs to run and requirements.txt or Pipfile that has lists 
+ of dependencies needed for the app. Since this api needs to run regression, all
+ the needed packages numpy, scipy, pandas and scikit--learn are configured from 
+ `heroku config buildpacks'. Then run `git remote', `git add' to add files,  
+ `git commit' and `git push heroku master'.
     
 
 \section{Analysis and Algorithms}
+  The cleaned data set has two attributes \textit{engine size} and
+  \textit{highway miles per gallon} and 199 data points. Before developing
+   a flask api, a linear regression machine learning model is created using
+   scikit-learn. As discussed earlier this is going to be the prediction model
+   and one of the endpoints for flask api.
 
-The cleaned data set has two attributes \textit{engine size} and
-\textit{highway miles per gallon} and 199 data points. Before
-developing a flask api, a linear regression machine learning model is
-created using scikit-learn. As discussed earlier this is going to be
-the prediction model and one of the endpoints for flask api.
-
-As it is mentioned above data set is split into two, one is train set
-and other is test set using algorithm train\_set\_split.  Train--set
-data is used to build the regression model. In order to train data
-set, we move label column to its own data frame called `train\_labels
-by pulling series``hwy\_mpg'' from
-train--set~\cite{hid-sp18-415-regression}. Then `LinearRegression'
-class is created and fit method is called by
-
-\[lin\_reg = LinearRegression()\]
-\[lin\_reg.fit(train\_set, train\_labels)\]
-
-Now we calculate intercept and slope our model. These values are used
-to create model formula as discussed in linear regression section
-above. Then predict function is called by passing series test\_set
-which returns an array of predicted
-values~\cite{hid-sp18-415-regression}. This model can be checked by
-calling print function for hwy\_mpg\_pred and test\_set series and
-compare values for each series. Another method to check how
-significant the model is by calculating the value for r--square which
-in this case is lin\_reg score by running following algorithm.
-
-\[lin\_reg.score(test\_set, test\_set\_full[``hwy\_mpg''])\]
-
-The value of this score ranges between 0 to 1. R square is called
-coefficient of determination. R square means that all the data points
-of the model falls perfectly on regression line. If value is more
-towards 0 then the regression line far away from the data points and
-model is not a good fit for the data set. For the created model of
-this analysis r square value is 0.584835 can be rounded to 0.585.
+   As it is mentioned above data set is split into two, one is train
+   set and other is test set using algorithm train\_set\_split. 
+   Train--set data is used to build the regression
+   model. In order to train data set, we move label column to its own data frame
+   called `train\_labels by pulling  series``hwy\_mpg'' from 
+   train--set~\cite{hid-sp18-415-regression}. Then `LinearRegression' 
+   class is created and fit 
+   method is called by \[lin\_reg = LinearRegression()\] 
+   \[lin\_reg.fit(train\_set, train\_labels)\]. Now we calculate intercept and
+  slope our model. These values are used to create model formula
+  as discussed in linear regression section above. Then predict function is
+  called  by passing series test\_set which returns an array of predicted 
+  values~\cite{hid-sp18-415-regression}. This model can be checked by calling
+  print function for hwy\_mpg\_pred
+  and test\_set series and compare values for each series. Another method to
+  check how significant the model is by calculating the value for r--square 
+  which in this case is lin\_reg score by running following algorithm.  
+  \[lin\_reg.score(test\_set, test\_set\_full[``hwy\_mpg''])\]
+  The value of this score ranges between 0 to 1. R square is called coefficient
+  of determination. R square means that all the data points of the model falls
+  perfectly on regression line. If value is more towards 0 then the regression 
+  line far away from the data points and model is not a good fit for the data
+  set. For the created model of this analysis r square value is 
+  0.584835 can be rounded to 0.585.
   
-After defining the model flask api is developed where just created
-model will be the resource object. The application file is located in
-github repository~\cite{hid-sp18-415-regressionapi}. But before this,
-we should make sure the model do not change when new data points are
-added. For the purpose joblib is being used.  Handle arrays stored in
-the models. Joblib persists newly created scikit--learn model so that
-for future use the model does not need to be
-retrained~\cite{hid-sp18-415-joblib}. Function joblib.load is being
-used in the application to load pickled regression model. This api
-calls one resource current--details and post predict value of hwy\_mpg
-when value for engine size is entered.
+  After defining the model flask api is developed where just created model will 
+  be the resource object. The application file is located in github 
+  repository~\cite{hid-sp18-415-regressionapi}. But before this,
+  we should make sure the model do not 
+  change when new data points are added. For the purpose joblib is being used.
+  handle arrays stored in the models. Joblib persists newly created
+  scikit--learn model so that for future use the model does not need to be
+  retrained~\cite{hid-sp18-415-joblib}. Function joblib.load is being used in
+  the application to load pickled regression model. This api calls one resource 
+  current--details  and post predict value of hwy\_mpg when value for engine
+  size is entered. 
    
   
 \section{Regression Results}
 
-<<<<<<< HEAD
-R square value shows how likely that predicted highway mpg fits into
-the regression model. It is 58 percent likely that future prediction
-will fall on the best fit line. It can be concluded that the model is
-fairly fit. While 58 percent of variance in highwaympg can be
-explained by engine size, there is 42 percent unexplained variance in
-highway mpg. To compare real highway miles per gallon values with
-predicted values, print function is run for test\_set and
-hwy\_mpg\_pred set.
-=======
  R square value shows how likely that predicted highway mpg fits into the
  regression model. It is 58 percent likely that future prediction will fall
  on the best fit line. It can be concluded that the model is fairly fit. While 
@@ -280,20 +260,55 @@ hwy\_mpg\_pred set.
   \caption{Scatter Plot Engine size and Highway MPG}
 \label{fig:scatterplt}
 \end{figure} 
->>>>>>> 3cb2fd0f7243bc2fef74ffdeda6aed71d55778ae
  
-Results can be compared between table~\ref{tab:PredMPG} and
-table~\ref{tab:TestSetMPG}.  The first table~\ref{tab:TestSetMPG}
-lists highway mpg with engine size from our test\_set data while
-table~\ref{tab:PredMPG} shows an array of predicted highway mpg.
-Looking at both tables the predicted values while not exactly same as
-observed values are quite similar to observed values from test
-dataset. If predicted output are exactly similar to that of observed
-then this would have been a perfectly fit model with all data points
-from test\_set passing through the line of regression plot from model
-with r--square value equal to 1.  The whole output can be found in
-github~\cite{hid-sp18-415-analysis}.  It shows that values are pretty
-close.
+\section{Future Work} 
+
+This service is tested using Dockerfile and Makefile and is able to fetch
+output locally. In the future it can be deployed into cloud platform heroku.
+As this project requires python's data analysis and machine-learning packages 
+besides it can be deployed using Dockerfile. For Deployment to Heroku, we need 
+three files.
+\begin{itemize}
+ \item A Dockerfile that helps with building an image and installing all the 
+ dependencies or requirements for running Flask api in Heroku. To deploy Flask 
+ api using Dockerile, container has to be registered into heroku by command
+ \verb|heroku container:login|~\cite{hid-sp18-415-heroku-com}. Then build image,
+ push to Container Registry by command 
+ \verb|heroku container:push web| and open the app in the browser with
+ \verb|heroku open|~\cite{hid-sp18-415-heroku-com}.
+ 
+ \item A Procfile that tells heroku what process to run. Here is an example of 
+ Procfile \verb|web: gunicorn appname:app|. In this example web is a process
+ which tells heroku to run in the web and gunicorn handles requests and appname 
+ is name of our application which in our case is 
+ regressionAPI~\cite{hid-sp18-415-regressionapi}.
+ \item Python files or application files.
+ \item Requirements.txt file
+ 
+ \end{itemize}
+
+\section{Conclusion}
+
+REST services with flask is simple to develop and deploy. 
+This project build a
+simple regression model from car dataset. Regression plot and r square
+value has been used to explain variance in miles per gallon (our dependent
+variable). The model details is later used as 
+a path for flask application. Also based on the model new data points can be 
+used for future prediction. The application is successsfully run in localhost
+with command python regressionAPI.py. The whole project has been dockerized in
+a docker container using Dockerfile. 
+
+
+
+
+\begin{acks}
+
+  The authors would like to thank Dr.~Gregor~von~Laszewski for his
+  support and suggestions to write this paper and teaching assistants who
+  helped me with all sorts of technical assistants.
+
+\end{acks}
 
 \begin{table}[htb]
   \centering
@@ -344,86 +359,6 @@ close.
    \caption{Highway MPG for Each Engine Size From Test Dataset} 
    \label{tab:TestSetMPG}
 \end{table}
-
-
- 
-Another way to check how good or accurate the model is by plotting
-regression plot from from model over scatter plot from test set.
-Figure~\ref{fig:regplt}. The figure below shows a regression plot over
-scatterplot. The regression plot from original data shows the
-variability in observed values og highway mpg is explained by the
-independent variable.
- 
- \begin{figure}[!h]
-  \includegraphics[scale=1.0]{images/reg_plot.pdf}
-  \caption{Regresssion Plot Engine size and Highway MPG}
-\label{fig:regplt}
-\end{figure}
- 
- 
-Figure~\ref{fig:predplt} shows the regression line or line of best
-fit passes somewhat nearby most of the data points. There are few
-outliers. The regression model can also be compared with the
-scatterplot for the whole data set in Figure~\ref{fig:scatterplt} as
-shown below, shows fairly show how data points are aligned.
- 
-  \begin{figure}[h!]
-  \includegraphics[scale=1.0]{images/scatterplot.pdf}
-  \caption{Scatter Plot Engine size and Highway MPG}
-\label{fig:scatterplt}
-\end{figure} 
- 
-\section{Future Work} 
-
-This service is tested using Dockerfile and Makefile and is able to
-fetch output locally. In the future it can be deployed into cloud
-platform heroku.  As this project requires python's data analysis and
-machine-learning packages besides it can be deployed using
-Dockerfile. For Deployment to Heroku, we need three files.
-
-\begin{itemize}
-
-\item A Dockerfile that helps with building an image and installing
-  all the dependencies or requirements for running Flask api in
-  Heroku. To deploy Flask api using Dockerile, container has to be
-  registered into heroku by command \verb|heroku|
-  container:login|~\cite{hid-sp18-415-heroku-com}. Then build image,
-  push to Container Registry by command
-  \verb|heroku container:push web| and open the app in the browser
-  with \verb|heroku open|~\cite{hid-sp18-415-heroku-com}.
- 
-\item A Procfile that tells heroku what process to run. Here is an
-  example of Procfile \verb|web: gunicorn appname:app|. In this
-  example web is a process which tells heroku to run in the web and
-  gunicorn handles requests and appname is name of our application
-  which in our case is
-  regressionAPI~\cite{hid-sp18-415-regressionapi}.
-\item Python files or application files.
-\item Requirements.txt file
- 
- \end{itemize}
-
-\section{Conclusion}
-
-REST services with flask is simple to develop and deploy.  This
-project build a simple regression model from car dataset. Regression
-plot and r square value has been used to explain variance in miles per
-gallon (our dependent variable). The model details is later used as a
-path for flask application. Also based on the model new data points
-can be used for future prediction. The application is successsfully
-run in localhost with command python regressionAPI.py. The whole
-project has been dockerized in a docker container using Dockerfile.
-
-
-
-
-\begin{acks}
-
-  The authors would like to thank Dr.~Gregor~von~Laszewski for his
-  support and suggestions to write this paper and teaching assistants who
-  helped me with all sorts of technical assistants.
-
-\end{acks}
 
 
 \begin{table}[htb]
