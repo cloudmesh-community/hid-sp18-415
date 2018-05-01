@@ -4,7 +4,7 @@ From heroku/miniconda
 ADD ./project/requirements.txt /tmp/requirements.txt
 
 #Install dependencies
-RUN pip install -qr /tmp/rwquirements.txt
+RUN pip install -qr /tmp/requirements.txt
 
 #add code
 ADD ./project/opt/regrapp/
