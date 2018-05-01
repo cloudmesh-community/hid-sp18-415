@@ -46,7 +46,7 @@
   Gateway Interface) toolkit and Jinja2 template engine''~\cite{hid-sp18-415-flask}.
   Being an interface between web server and and web applications, 
   ``it implements requests and response objects'' while jinja2 render web page
-  by combining template and data source~\cite{hid-sp18-415-flask}. 
+  by combining template and data source~\cite{hid-sp18-415-www-flask}. 
   Flask api framework requires minimal framework for RESTful web services.
   Rest services is an architectural style web services which use HTTP protocol
   to establish communication between client and server during each service
@@ -54,7 +54,7 @@
   Being lightweight and scalable, flask is chosen as a good option for 
   developing the RESTful apis. While flask does not have built--in support for 
   database handling and validation support, these functionality can be added as
-  extensions to the application~\cite{hid-sp18-415-flask}.
+  extensions to the application~\cite{hid-sp18-415-www-flask}.
   The main purpose of this paper is
   to create a regression model for car data set and then create a web service
   with flask. The model is intended to
@@ -72,8 +72,8 @@
   then deployed to heroku which is an open source platform as a 
   service cloud platform. This also has a minimal deployment needs.
   It requires openining an account in heroku.com, then download heroku
-  command line interface(CLI). Then run heroku login from CLI and
-  and create an app. This is discussed in more detail under \emp{methods} 
+  command line interface (CLI). Then run heroku login from CLI and
+  and create an app. This is discussed in more detail under \textit{methods} 
   section.
   
  
@@ -136,8 +136,8 @@
  the new data set based on engine size is the regression problem. Data
  is split into train set and test set in 2:8 ratio.
     
-   Regression analysis or building a best fit model for our data set is
-   discussed in detail under section Analysis and Algorithm. Now the data
+  Regression analysis or building a best fit model for our data set is
+  discussed in detail under section Analysis and Algorithm. Now the data
    set is split into two sets one used for defining a regression 
    equation. This equation is going to be the prediction model for data.
    Once regression equation is defined
@@ -154,7 +154,7 @@
  with the process it needs to run and requirements.txt or Pipfile that has lists 
  of dependencies needed for the app. Since this api needs to run regression, all
  the needed packages numpy, scipy, pandas and scikit--learn are configured from 
- 'heroku config buildpacks'. Then run `git remote', `git add .' to add files,  
+ `heroku config buildpacks'. Then run `git remote', `git add .' to add files,  
  `git commit' and `git push heroku master'.
     
 
@@ -177,7 +177,7 @@
   slope our model. These values are used to create model formula
   as discussed in linear regression section above. Then predict function is
   called  by passing series test\_set which returns an array of predicted 
-  values~\cite{hid-sp-18-415-regression}. This model can be checked by calling
+  values~\cite{hid-sp18-415-regression}. This model can be checked by calling
   print function for hwy\_mpg\_pred
   and test\_set series and compare values for each series. Another method to
   check how significant the model is by calculating the value for r--square 
@@ -191,13 +191,13 @@
   0.584835 can be rounded to 0.585.
   
   After defining the model flask api is developed where just created model will 
-  be the resource object. The application file is located in github repository
-  ~\cite{hid-sp-18-415-regresssionapi}. But before this,
-   we should make sure the model do not 
+  be the resource object. The application file is located in github 
+  repository~\cite{hid-sp18-415-regressionapi}. But before this,
+  we should make sure the model do not 
   change when new data points are added. For the purpose joblib is being used.
   handle arrays stored in the models. Joblib persists newly created
   scikit--learn model so that for future use the model does not need to be
-  retrained~\cite{hid-sp-18-415-joblib}. Function joblib.load is being used in
+  retrained~\cite{hid-sp18-415-joblib}. Function joblib.load is being used in
   the application to load pickled regression model. This api calls one resource 
   current--details  and post predict value of hwy\_mpg when value for engine
   size is entered. 
@@ -214,9 +214,10 @@
  predicted values, print function is
  run for test\_set and hwy\_mpg\_pred set.
  
- Results can be compared between \ref{tab:PredMPG} and \ref{tab:TestSetMPG}. 
- The first \ref{tab:TestSetMPG} lists highway mpg with engine size from our
- test\_set data while \ref{tab:PredMPG} shows an array of predicted highway mpg. 
+ Results can be compared between table~\ref{tab:PredMPG} 
+ and~\ref{tab:TestSetMPG}. 
+ The first~\ref{tab:TestSetMPG} lists highway mpg with engine size from our
+ test\_set data while~\ref{tab:PredMPG} shows an array of predicted highway mpg. 
  Looking at both tables the predicted values while not exactly same as observed 
  values are quite similar to observed values from test dataset. If predicted
  output are exactly similar to that of observed then this would have been a 
@@ -243,16 +244,16 @@ three files.
  \item A Dockerfile that helps with building an image and installing all the 
  dependencies or requirements for running Flask api in Heroku. To deploy Flask 
  api using Dockerile, container has to be registered into heroku by command
- \verb|heroku container:login|~\cite{hid-sp18-415-heroku}. Then build image,
+ \verb|heroku container:login|~\cite{hid-sp18-415-heroku-com}. Then build image,
  push to Container Registry by command 
  \verb|heroku container:push web| and open the app in the browser with
- \verb|heroku open|~\cite{hid-sp18-415-heroku}.
+ \verb|heroku open|~\cite{hid-sp18-415-heroku-com}.
  
  \item A Procfile that tells heroku what process to run. Here is an example of 
  Procfile \verb|web: gunicorn appname:app|. In this example web is a process
  which tells heroku to run in the web and gunicorn handles requests and appname 
  is name of our application which in our case is 
- regressionAPI~\cite{hid-sp-18-415-regresssionapi}.
+ regressionAPI~\cite{hid-sp18-415-regressionapi}.
  \item Python files or application files.
  \item Requirements.txt file
  
@@ -336,8 +337,8 @@ a docker container using Dockerfile.
     \centering
     \begin{tabular}{llcrr p{8cm}}
     \hline
-    \multicolumn{3}{c}{Array of hwy\_mpg\_pred}\\ \hline
     \midrule
+    \multicolumn{3}{c}{Array of hwy\_mpg\_pred}\\ \hline
   31.18833214 & 21.44002624 & 27.82684735 & 32.64497555 &  33.87751997 \\						
   28.4991443  &  18.63878892 & 24.35331306 & 31.18833214 & 25.69790698 \\						
   33.98956946 & 34.54981693 & 24.35331306 &  34.54981693 & 33.98956946 \\						
@@ -347,9 +348,10 @@ a docker container using Dockerfile.
   29.05939177 & 15.94960108 & 30.29193619 & 28.4991443  & 24.57741205 \\						
   18.63878892 & 31.30038163 & 23.12076864 & 34.54981693 & 31.18833214 \\
   \hline
+  \midrule
     \end{tabular}
     \caption{Array of Predicted Highway MPG from  Model}
-    \label{tab:PredMpg}
+    \label{tab:PredMPG}
 \end{table}
 
 
@@ -358,28 +360,28 @@ a docker container using Dockerfile.
 
 \begin{figure}[htb]
 \includegraphics[width=1.0\columnwidth]{images/testset_pred_hwy_mpg.png}
-  \caption{Predicted Highway MPG vs Test Set Highway MPG}
-  \label{p:HwyMpg Compare}
+\caption{Predicted Highway MPG vs Test Set Highway MPG}
+\label{p:HwyMpg Compare}
 \end{figure}
 
 
 
 \begin{figure}[htb]
 \includegraphics[width=1.0\columnwidth]{images/scatterplot.pdf}
-  \caption{Scatter Plot Engine size and Highway MPG}
-  \label{p:scatterplt}
+\caption{Scatter Plot Engine size and Highway MPG}
+\label{p:scatterplt}
 \end{figure}
 
 \begin{figure}[htb]
 \includegraphics[width=1.0\columnwidth]{images/reg_plot.pdf}
-  \caption{Regresssion Plot Engine size and Highway MPG}
-  \label{p:regplt}
+\caption{Regresssion Plot Engine size and Highway MPG}
+\label{p:regplt}
 \end{figure}
 
 \begin{figure}[htb]
 \includegraphics[width=1.0\columnwidth]{images/plot_pred_test_set.pdf}
-  \caption{Prediction Plot Engine size and Highway MPG}
-  \label{p:predplt}
+\caption{Prediction Plot Engine size and Highway MPG}
+\label{p:predplt}
 \end{figure}
 
 \bibliographystyle{ACM-Reference-Format}
