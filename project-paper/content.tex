@@ -99,8 +99,7 @@
   environment, building a linear regression model using SciKit--learn,
   designing a REST api with Flask. The application is then tested by running 
   locally and also deploying it into heroku are the main
-  processes of this project. They are explained below under each bullet
-  points:
+  processes of this project. They are explained below in details. 
 
    Automobile Data Set, \textit{https://archive.ics.uci.edu/ml/
    machine--learning-databases/autos/imports--85.data}, from UCI
@@ -118,7 +117,7 @@
    application. The data set is located at 
  \textit{https://www.dropbox.com/s/986566hudfytl8h/cardata.csv?dl=0}.
   
-  Ubuntu 16.04 is the operating system used for whole project.
+ Ubuntu 16.04 is the operating system used for whole project.
  A virtual environment pyenv is created in Ubuntu 16.04 where python 3
  environment is built. Besides, flask, this project requires different python
  packages to fetch and manipulate data and run the linear regression and
@@ -205,26 +204,37 @@
    
   
 \section{Regression Results}
+
  R square value shows how likely that predicted highway mpg fits into the
  regression model. It is 58 percent likely that future prediction will fall
  on the best fit line. It can be concluded that the model is fairly fit. While 
- 58 percent of variance has been explained there is 42 percent unexplained
+ 58 percent of variance in highwaympg can be explained by engine size,
+ there is 42 percent unexplained
  variance in highway mpg. To compare real highway miles per gallon values with 
  predicted values, print function is
- run for test\_set and hwy\_mpg\_pred set. The results are quite similar as
- shown in this figure~\ref{p:HwyMpg Compare}. While not all values can not be seen  
- in this the whole output can be found in github~\cite{hid-sp18-415-analysis}.
+ run for test\_set and hwy\_mpg\_pred set.
+ 
+ Results can be compared between \ref{tab:PredMPG} and \ref{tab:TestSetMPG}. 
+ The first \ref{tab:TestSetMPG} lists highway mpg with engine size from our
+ test\_set data while \ref{tab:PredMPG} shows an array of predicted highway mpg. 
+ Looking at both tables the predicted values while not exactly same as observed 
+ values are quite similar to observed values from test dataset. If predicted
+ output are exactly similar to that of observed then this would have been a 
+ perfectly fit model with all data points from test\_set passing through the
+ line of regression plot from model with r--square value equal to 1.
+ The whole output can be found in github~\cite{hid-sp18-415-analysis}.
  It shows that values are pretty close.
+ 
  Another way model significance is checked by plotting regression plot from
- from model over scatter plot from test set~\ref{p:HwyMpg Compare}. The plot shows 
- the regression line or line of best fit passes right through most of the data
+ from model over scatter plot from test set~\ref{p:predplt}. The plot shows 
+ the regression line or line of best fit passes somewhat nearby most of the data
  points. There are few outliers. The regression model can also be compared with 
  the original scatterplot~\ref{p:scatterplot} which fairly show how data points
  are aligned.  
  
 \section{Future Work} 
 
-This service is tested using DOckerfile and Makefile and is able to fetch
+This service is tested using Dockerfile and Makefile and is able to fetch
 output locally. In the future it can be deployed into cloud platform heroku.
 As this project requires python's data analysis and machine-learning packages 
 besides it can be deployed using Dockerfile. For Deployment to Heroku, we need 
@@ -266,9 +276,85 @@ a docker container using Dockerfile.
 \begin{acks}
 
   The authors would like to thank Dr.~Gregor~von~Laszewski for his
-  support and suggestions to write this paper.
+  support and suggestions to write this paper and teaching assistants who
+  helped me with all sorts of technical assistants.
 
 \end{acks}
+
+\begin{table}[htb]
+  \centering
+   \begin{tabular}{|c|c| p{5cm}|}
+   \hline{}
+    engine\_size & hwy\_mpg \\ \hline
+     82  & 32 \\ \hline
+     15  & 22 \\ \hline
+     111 & 25 \\ \hline 
+     177 & 34 \\ \hline
+     76  & 30 \\ \hline
+     163 & 30 \\ \hline
+     68  & 18 \\ \hline
+     67  & 25 \\ \hline
+     120 & 30 \\ \hline
+     173 & 24 \\ \hline
+     176 & 46 \\ \hline
+     148 & 32 \\ \hline
+     65  & 25 \\ \hline
+     30  & 38 \\ \hline
+     86  & 37 \\ \hline
+     85  & 30 \\ \hline
+     55  & 23 \\ \hline
+     60  & 42 \\ \hline
+     90  & 37 \\ \hline
+     159 & 29 \\ \hline
+     16  & 20 \\ \hline
+     124 & 25 \\ \hline
+     96  & 34 \\ \hline
+     172 & 24 \\ \hline
+     66  & 25 \\ \hline
+     189 & 28 \\ \hline
+     147 & 37 \\ \hline
+     9   & 29 \\ \hline
+     18  & 43 \\ \hline
+     128 & 28 \\ \hline
+     190 & 28 \\ \hline
+     45  & 19 \\ \hline
+     192 & 22 \\ \hline
+     164 & 30 \\ \hline
+     101 & 25 \\ \hline
+     69  & 18 \\ \hline
+     126 & 28 \\ \hline
+     123 & 25 \\ \hline
+     75  & 38 \\ \hline
+     78  & 32 \\ \hline
+   \end{tabular}  
+   \caption{Highway MPG for Each Engine Size From Test Dataset} 
+   \label{tab:TestSetMPG}
+\end{table}
+
+
+\begin{table}[htb]
+    \centering
+    \begin{tabular}{llcrr p{8cm}}
+    \hline
+    \multicolumn{3}{c}{Array of hwy\_mpg\_pred}\\ \hline
+    \midrule
+  31.18833214 & 21.44002624 & 27.82684735 & 32.64497555 &  33.87751997 \\						
+  28.4991443  &  18.63878892 & 24.35331306 & 31.18833214 & 25.69790698 \\						
+  33.98956946 & 34.54981693 & 24.35331306 &  34.54981693 & 33.98956946 \\						
+  32.53292605 & 35.89441084 & 31.18833214 &  33.98956946 & 33.87751997 \\						
+  21.44002624 & 23.12076864 & 31.41243112 & 25.69790698 & 24.35331306 \\						
+  29.05939177 & 34.54981693 & 32.75702504 & 34.77391591 & 31.30038163 \\						
+  29.05939177 & 15.94960108 & 30.29193619 & 28.4991443  & 24.57741205 \\						
+  18.63878892 & 31.30038163 & 23.12076864 & 34.54981693 & 31.18833214 \\
+  \hline
+    \end{tabular}
+    \caption{Array of Predicted Highway MPG from  Model}
+    \label{tab:PredMpg}
+\end{table}
+
+
+
+
 
 \begin{figure}[htb]
 \includegraphics[width=1.0\columnwidth]{images/testset_pred_hwy_mpg.png}
