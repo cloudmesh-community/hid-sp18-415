@@ -1,4 +1,4 @@
-% status: 100 (still editing as suggested by professor)
+% status: 100 
 % chapter: TBD
 \title{Simple Linear Regression API with Flask}
 
@@ -116,8 +116,7 @@ section.
    based on engine size. The data set have several missing instances
    as well which are removed as a clean up process. Cleaned data is stored in
    Dropox as a csv   file so that it can be easily fetched into the
-   application. The data set is located at 
- \textit{https://www.dropbox.com/s/986566hudfytl8h/cardata.csv?dl=0}.
+   application~\cite{hid-sp18-415-data}.
   
  Ubuntu 16.04 is the operating system used for whole project.
  A virtual environment pyenv is created in Ubuntu 16.04 where python 3
@@ -128,7 +127,8 @@ section.
  packages, python packages matplotlib and seaborn are also installed as they
  are required to create a regression plot and plot line of best fit. 
  
- Next is building a model from the data set. This is done by
+ Once environment is setup regression or prediction model needs to be build
+ from the data set so that this model is used in Flask app. This is done by
  running python's machine learning application. There are two types of
  machine learning, supervised and unsupervised learning. Supervised
  Machine learning is learning properties of data set (training data set)
@@ -185,7 +185,7 @@ the needed packages numpy, scipy, pandas and scikit--learn are configured from
   and test\_set series and compare values for each series. Another method to
   check how significant the model is by calculating the value for r--square 
   which in this case is lin\_reg score by running following algorithm.  
-  \[lin\_reg.score(test\_set, test\_set\_full[``hwy\_mpg''])\]
+  \[lin\_reg.score(test\_set, test\_set\_full[`hwy\_mpg'])\]
   The value of this score ranges between 0 to 1. R square is called coefficient
   of determination. R square means that all the data points of the model falls
   perfectly on regression line. If value is more towards 0 then the regression 
@@ -352,7 +352,11 @@ three files.
  \item A Dockerfile that helps with building a docker image and installing 
  all the dependencies or requirements for running Flask api in Heroku.
  To deploy Flask api using Dockerile, container has to be registered into 
- heroku by command.
+ heroku by command. As an effort a Dockerfile is 
+ created~\cite{hid-sp18-415-dockerfile} and tried out 
+ following steps. While container is successfully built and pushed to heroku 
+ web, there are one or two 
+ issues that needs to be fixed.
  \verb|heroku container:login|~\cite{hid-sp18-415-heroku-com}. 
  Then build image, push to Container Registry by command 
  \verb|heroku container:push web| and open the app in the browser with
