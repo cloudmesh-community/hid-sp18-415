@@ -14,7 +14,7 @@ def predict():
             data = request.get_json()
             engine_size = int(data["engine_size"])
 
-            lin_reg = joblib.load("./linear_regression_model.pkl")
+            lin_reg = joblib.load("./linear_regression_model.pkl", protocol=2)
         except ValueError:
             return jsonify("Please enter a number.")
 
@@ -27,9 +27,9 @@ def predict():
 def current_details():
     if request.method == 'GET':
         try:
-            lr = joblib.load("./linear_regression_model.pkl")
-            training_set = joblib.load("./training_data.pkl")
-            labels = joblib.load("./training_labels.pkl")
+            lr = joblib.load("./linear_regression_model.pkl", protocol=2)
+            training_set = joblib.load("./training_data.pkl", protocol=2)
+            labels = joblib.load("./training_labels.pkl", protocol=2)
 
             return jsonify({"score": lr.score(training_set, labels),
                             "coefficients": lr.coef_.tolist(), "intercepts": lr.intercept_})
