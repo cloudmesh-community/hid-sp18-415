@@ -1,1 +1,1 @@
-from app import app as application
+from regapp import app as application

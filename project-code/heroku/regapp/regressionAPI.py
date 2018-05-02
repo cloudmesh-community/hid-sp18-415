@@ -6,7 +6,6 @@ from sklearn.linear_model import LinearRegression
 
 app = Flask(__name__)
 
-joblib.dump(lin_reg, "linear_regression_model.pkl")
 
 @app.route("/predict", methods=['POST'])
 def predict():
