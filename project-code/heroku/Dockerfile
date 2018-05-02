@@ -13,4 +13,4 @@ WORKDIR /opt/regapp
 RUN conda install pandas scikit-learn
 
 
-CMD gunicorn -w 4 -b 127.0.0.1:5000 regressionAPI:app 
+CMD gunicorn -w 4 -b 0.0.0.0:$PORT regressionAPI:app 
