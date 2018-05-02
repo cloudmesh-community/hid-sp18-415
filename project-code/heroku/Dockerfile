@@ -13,4 +13,4 @@ WORKDIR /opt/regapp
 RUN conda install pandas scikit-learn
 
 
-cmd gunicorn --bind 0.0.0.0:$PORT wsgi
+CMD gunicorn --bind 0.0.0.0:$PORT wsgi
