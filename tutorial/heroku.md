@@ -69,7 +69,7 @@
 * Heroku logs
 * HTTP routing 
 
-## API with Python Flask on Heroku (incomplete, working on it)
+## API with Python Flask on Heroku
 
 * Download flask and gunicorn, virtualenv or pyenv if we don't have
   setup already
