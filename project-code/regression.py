@@ -29,7 +29,6 @@ hwy_mpg_pred
 BASE_URL = "http://localhost:5000"
 
 joblib.dump(lin_reg, "linear_regression_model.pkl")
-
 joblib.dump(train_set, "training_data.pkl")
 joblib.dump(train_labels, "training_labels.pkl")
 
