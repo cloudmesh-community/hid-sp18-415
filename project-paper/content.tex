@@ -24,7 +24,8 @@
   Python's flask application requires minimal application for application
   development. Flask make use of backend data as a resource to support an
   application running on the server. This project discusses development
-  and deployment of REST api with python flask. This flask api gets predict
+  and deployment of REST api with python flask. This flask api gets current
+  details
   info based on regression model created from car dataset. Once flask app runs 
   successfully, it is then deployed to Heroku, a platform as a service 
   cloud platform. For the purpose car data set from UCI machine learning
@@ -73,10 +74,13 @@ our resource will be our json object stored in key--value pair.
 Once flask api is succesfully run in localhost, the application is
 then deployed to heroku which is an open source platform as a 
 service cloud platform. This also has a minimal deployment needs.
-It requires openining an account in heroku.com, then download heroku
+It requires opening an account in heroku.com, then download heroku
 command line interface (CLI). Then run heroku login from CLI and
-and create an app. This is discussed in more detail under \textit{methods} 
-section.
+and create an app. This flask appplication is about running machine learning
+learning algorithm in heroku. It requires python packages such as pandas and 
+scikit--learn, we deploy our app by packaging all required packages in docker
+container and pushed to the platform. This process is discussed in more detail 
+under \textit{methods} section.
   
 \section{Simple Linear Regression}
 
@@ -157,9 +161,9 @@ deployed through git push. In order to deploy to heroku it needs `Procfile'
 with the process it needs to run and requirements.txt or Pipfile that has lists 
 of dependencies needed for the app. Since this api needs to run regression, all
 the needed packages numpy, scipy, pandas and scikit--learn are configured from 
-`heroku config buildpacks'. Then run `git remote', `git add' to add files,  
-`git commit' and `git push heroku master'.
-    
+Dockerile. For a minimal flask deployment following commands are run 
+`git remote', `git add' to add files, `git commit' and `git push heroku master'.
+In this case app is pushed using docker container for simplification.    
 
 \section{Analysis and Algorithms}
 
@@ -342,12 +346,21 @@ the needed packages numpy, scipy, pandas and scikit--learn are configured from
 \label{fig:scatterplt}
 \end{figure} 
  
-\section{Limitations} 
+\section{Deploying App to Heroku} 
 
 This service is tested using Dockerfile and Makefile and is able to fetch
-output locally. In the future it can be deployed into cloud platform heroku.
+output locally. Now, the application is tested in heroku cloud platform. Heroku
+is chosen as the platform is open source as long as the application needs few 
+`dyno', that is one or two. Which means as long as application has minimal
+requirements. Dynos are containers provided by heroku platform where we can 
+push our application and instruct them to execute the application.
+
+Another reason of choosing heroku is that we do not have to worry about 
+containers or nodes to scale up the deployment. Heroku manages all of these
+needs. As an application developer, we just need to work on designing the 
+intended app.
 As this project requires python's data analysis and machine-learning packages 
-besides it can be deployed using Dockerfile. For Deployment to Heroku, we need 
+besides it is then deployed using Dockerfile. For Deployment to Heroku, we need 
 three files.
 \begin{itemize}
  \item A Dockerfile that helps with building a docker image and installing 
@@ -372,6 +385,9 @@ three files.
  \item Requirements.txt file
  
  \end{itemize}
+ 
+\section{Limitations and Challenges}
+
 
 \section{Conclusion}
 
