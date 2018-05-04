@@ -356,38 +356,62 @@ requirements. Dynos are containers provided by heroku platform where we can
 push our application and instruct them to execute the application.
 
 Another reason of choosing heroku is that we do not have to worry about 
-containers or nodes to scale up the deployment. Heroku manages all of these
+containers or nodes to scale up app deployment. Heroku manages all of these
 needs. As an application developer, we just need to work on designing the 
-intended app.
+intended app. For authentication an user account is created in heroku.com
+using heroku dashboard.Then heroku command line is downloaded in local terminal.
+Then run heroku login which in turn asks us to enter our email and password
+for authentication.
+
 As this project requires python's data analysis and machine-learning packages 
-besides it is then deployed using Dockerfile. For Deployment to Heroku, we need 
-three files.
+it is then deployed using Dockerfile. 
+
+\subsection{Dockerfile and Heroku Container Registry}
+ Our app named \textit{regressionAPI} needs several python packages. These
+ packages can be added using heroku buildpacks. But for convenient deployment
+ it is deployed using docker. Docker needs to be installed locally before 
+ starting the process. Then `Dockerfile' is created  so that
+ all of our required packages are fetched from it. Docker image is built from
+ miniconda which comes with python, pandas, numpy and scipy. Using conda install
+ scikit--learn, this package is also fetched into the 
+ container~\cite{hid-sp18-415-dockerfile}.  
+
+Now app is almost ready to be deployed to Heroku. The process needs
+following three files.
+
 \begin{itemize}
  \item A Dockerfile that helps with building a docker image and installing 
  all the dependencies or requirements for running Flask api in Heroku.
  To deploy Flask api using Dockerile, container has to be registered into 
- heroku by command. As an effort a Dockerfile is 
- created~\cite{hid-sp18-415-dockerfile} and tried out 
- following steps. While container is successfully built and pushed to heroku 
- web, there are one or two 
- issues that needs to be fixed.
- \verb|heroku container:login|~\cite{hid-sp18-415-heroku-com}. 
- Then build image, push to Container Registry by command 
- \verb|heroku container:push web| and open the app in the browser with
- \verb|heroku open|~\cite{hid-sp18-415-heroku-com}.
- 
+ heroku by command. 
+ \item Requirements.txt file~\cite{hid-sp18-415-regapp}
+ \item Python files or application files. In this case regressionAPI.py
+ \item wsgi.py file~\cite{hid-sp18-415-regapp}
  \item A Procfile that tells heroku what process to run. Here is an example 
  of Procfile \verb|web: gunicorn appname:app|. In this example web is a 
  process which tells heroku to run in the web and gunicorn handles requests
  and appname is name of our application which in our case is 
  regressionAPI~\cite{hid-sp18-415-regressionapi}.
- \item Python files or application files.
- \item Requirements.txt file
- 
  \end{itemize}
  
+ Now we need to run following commands from local terminal.
+ 
+ \verb|heroku container:login|~\cite{hid-sp18-415-heroku-com}. This registers
+ our docker container to heroku. Then \verb|heroku create| creates app remotely
+ into heroku and gives us app name from heroku
+ Then to buildbuild image, push to Container Registry by command 
+ \verb|heroku container:push web --app appname| and open the app in the 
+ browser  herokuapp.com. with following command
+ \verb|heroku open --app appname|~\cite{hid-sp18-415-heroku-com}. It launches 
+ app into heroku. By logging into heroku dashboard execution logs can
+ be observed whcich helps debugging the whole process. 
+ 
 \section{Limitations and Challenges}
-
+ 
+The project was intended also to do benchmarking by running rest services in
+locally developed raspberry pi cluster. Three node pi cluster is created for the
+purpose with raspbian images on all of them. Certain issues in packages 
+installations are the challenges at the moment.
 
 \section{Conclusion}
 
@@ -398,7 +422,8 @@ value has been used to explain variance in miles per gallon (our dependent
 variable). The model details is later used as 
 a path for flask application. Also based on the model new data points can be 
 used for future prediction. The application is successsfully run in localhost
-with command python regressionAPI.py. The whole project has been dockerized in
+with command python regressionAPI.py. Also deployed in heroku cloud platform 
+using docker container. The whole project has been dockerized in
 a docker container using Dockerfile. 
 
 
