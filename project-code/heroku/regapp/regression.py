@@ -28,10 +28,9 @@ hwy_mpg_pred
 
 BASE_URL = "http://localhost:5000"
 
-joblib.dump(lin_reg, "linear_regression_model.pkl", protocol=2)
-
-joblib.dump(train_set, "training_data.pkl", protocol=2)
-joblib.dump(train_labels, "training_labels.pkl", protocol=2)
+#joblib.dump(lin_reg, "linear_regression_model.pkl", protocol=2)
+#oblib.dump(train_set, "training_data.pkl", protocol=2)
+#joblib.dump(train_labels, "training_labels.pkl", protocol=2)
 
 #predict API
 eng_size = {"engine_size": 27}
