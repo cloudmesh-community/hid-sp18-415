@@ -1,1 +1,1 @@
-from regapp import app as application
+from regressionAPI.py import app as application
