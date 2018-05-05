@@ -27,27 +27,27 @@
    
  * Fetch code from Git repo
  
- ```sh
- $ git clone https://github.com/cloudmesh-community/hid-sp18-415/blob/master/project-code/heroku
+   ```sh
+   $ git clone https://github.com/cloudmesh-community/hid-sp18-415/blob/master/project-code/heroku
  
- ```
+   ```
  * Go to app directory and run following command. A git repository with the application
    will be created and a name will be asigned to the app. 
  
- ```sh
- $ heroku create
- ```
+   ```sh
+   $ heroku create
+   ```
 * Now following command will build the image and push it to Container Registry. It
   takes quite some time to build and push image. 
   
-  ``sh
-  $ heroku container:push web --app appname
-  ```
+   ```sh
+   $ heroku container:push web --app appname
+   ```
 * Once it is done it is time to open app by following command
 
-  ``sh
-  $ heroku open --app appname
-  ```
+   ```sh
+   $ heroku open --app appname
+   ```
 * This will open app in herokuapp.com
   Right now it runs in the folowing link
   
