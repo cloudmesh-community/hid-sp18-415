@@ -249,47 +249,88 @@ In this case app is pushed using docker container for simplification.
   \centering
    \begin{tabular}{|c|c| p{5cm}|}
    \hline{}
-    engine\_size & hwy\_mpg \\ \hline
-     82  & 32 \\ \hline
-     15  & 22 \\ \hline
-     111 & 25 \\ \hline 
-     177 & 34 \\ \hline
-     76  & 30 \\ \hline
-     163 & 30 \\ \hline
-     68  & 18 \\ \hline
-     67  & 25 \\ \hline
-     120 & 30 \\ \hline
-     173 & 24 \\ \hline
-     176 & 46 \\ \hline
-     148 & 32 \\ \hline
-     65  & 25 \\ \hline
-     30  & 38 \\ \hline
-     86  & 37 \\ \hline
-     85  & 30 \\ \hline
-     55  & 23 \\ \hline
-     60  & 42 \\ \hline
-     90  & 37 \\ \hline
-     159 & 29 \\ \hline
-     16  & 20 \\ \hline
-     124 & 25 \\ \hline
-     96  & 34 \\ \hline
-     172 & 24 \\ \hline
-     66  & 25 \\ \hline
-     189 & 28 \\ \hline
-     147 & 37 \\ \hline
-     9   & 29 \\ \hline
-     18  & 43 \\ \hline
-     128 & 28 \\ \hline
-     190 & 28 \\ \hline
-     45  & 19 \\ \hline
-     192 & 22 \\ \hline
-     164 & 30 \\ \hline
-     101 & 25 \\ \hline
-     69  & 18 \\ \hline
-     126 & 28 \\ \hline
-     123 & 25 \\ \hline
-     75  & 38 \\ \hline
-     78  & 32 \\ \hline
+    engine\_size & hwy\_mpg \\ 
+    \hline
+     82  & 32 \\ 
+     \hline
+     15  & 22 \\ 
+     \hline
+     111 & 25 \\ 
+     \hline 
+     177 & 34 \\ 
+     \hline
+     76  & 30 \\ 
+     \hline
+     163 & 30 \\ 
+     \hline
+     68  & 18 \\ 
+     \hline
+     67  & 25 \\ 
+     \hline
+     120 & 30 \\ 
+     \hline
+     173 & 24 \\ 
+     \hline
+     176 & 46 \\ 
+     \hline
+     148 & 32 \\ 
+     \hline
+     65  & 25 \\ 
+     \hline
+     30  & 38 \\ 
+     \hline
+     86  & 37 \\ 
+     \hline
+     85  & 30 \\ 
+     \hline
+     55  & 23 \\ 
+     \hline
+     60  & 42 \\ 
+     \hline
+     90  & 37 \\ 
+     \hline
+     159 & 29 \\ 
+     \hline
+     16  & 20 \\ 
+     \hline
+     124 & 25 \\ 
+     \hline
+     96  & 34 \\ 
+     \hline
+     172 & 24 \\ 
+     \hline
+     66  & 25 \\ 
+     \hline
+     189 & 28 \\ 
+     \hline
+     147 & 37 \\ 
+     \hline
+     9   & 29 \\ 
+     \hline
+     18  & 43 \\ 
+     \hline
+     128 & 28 \\ 
+     \hline
+     190 & 28 \\ 
+     \hline
+     45  & 19 \\ 
+     \hline
+     192 & 22 \\ 
+     \hline
+     164 & 30 \\ 
+     \hline
+     101 & 25 \\ 
+     \hline
+     69  & 18 \\ 
+     \hline
+     126 & 28 \\ 
+     \hline
+     123 & 25 \\ 
+     \hline
+     75  & 38 \\ 
+     \hline
+     78  & 32 \\ 
+     \hline
    \end{tabular}  
    \caption{Highway MPG for Each Engine Size From Test Dataset} 
    \label{tab:TestSetMPG}
@@ -299,11 +340,12 @@ In this case app is pushed using docker container for simplification.
  predicted highway mpg. 
  
  \begin{table}[htb]
-    \centering
-    \begin{tabular}{llcrr p{8cm}}
+\resizebox{\columnwidth}{!}{%
+    \begin{tabular}{llcrrp{8cm}}
     \hline
     \midrule
-    \multicolumn{3}{c}{Array of hwy\_mpg\_pred}\\ \hline
+    \multicolumn{3}{c}{Array of hwy\_mpg\_pred}\\ 
+    \hline
   31.18833214 & 21.44002624 & 27.82684735 & 32.64497555 &  33.87751997 \\						
   28.4991443  &  18.63878892 & 24.35331306 & 31.18833214 & 25.69790698 \\						
   33.98956946 & 34.54981693 & 24.35331306 &  34.54981693 & 33.98956946 \\						
@@ -315,6 +357,7 @@ In this case app is pushed using docker container for simplification.
   \hline
   \midrule
     \end{tabular}
+}
     \caption{Array of Predicted Highway MPG from  Model}
     \label{tab:PredMPG}
 \end{table}
@@ -335,7 +378,7 @@ In this case app is pushed using docker container for simplification.
  in observed values of highway mpg is explained by the independent variable.
  
  \begin{figure}[!h]
-  \includegraphics[scale=0.3]{images/reg_plot.png}
+  \includegraphics[width=\columnwidth]{images/reg_plot.png}
   \caption{Regresssion Plot Engine size and Highway MPG}
 \label{fig:regplt}
 \end{figure}
@@ -346,7 +389,7 @@ In this case app is pushed using docker container for simplification.
  points. 
  
  \begin{figure}[htb]
-  \includegraphics[scale=0.3]{images/plot_pred_test_set.png}
+  \includegraphics[width=\columnwidth]{images/plot_pred_test_set.png}
   \caption{Prediction Plot Engine size and Highway MPG}
   \label{fig:predplt}
 \end{figure}
@@ -358,7 +401,7 @@ In this case app is pushed using docker container for simplification.
  points are aligned.
  
   \begin{figure}[h!]
-  \includegraphics[scale=1.0]{images/scatterplot.png}
+  \includegraphics[width=\columnwidth]{images/scatterplot.png}
   \caption{Scatter Plot Engine size and Highway MPG}
 \label{fig:scatterplt}
 \end{figure} 
@@ -417,11 +460,21 @@ following three files.
  our docker container to heroku. Then \verb|heroku create| creates app remotely
  into heroku and gives us app name from heroku
  Then to buildbuild image, push to Container Registry by command 
- \verb|heroku container:push web --app appname| and open the app in the 
- browser  herokuapp.com. With following command
- \verb|heroku open --app appname|~\cite{hid-sp18-415-heroku-com}. It launches 
- app into heroku. By logging into heroku dashboard execution logs can
- be observed whcich helps debugging the whole process. 
+
+\begin{verbatim}
+    heroku container:push web --app appname
+\end{verbatim}
+
+ and open the app in the browser herokuapp.com. With following
+ command~\cite{hid-sp18-415-heroku-com}:
+
+\begin{verbatim}
+    heroku open --app appname
+\end{verbatim}
+
+ It launches app into heroku. By logging into heroku dashboard
+ execution logs can be observed whcich helps debugging the whole
+ process.
  
 \section{Limitations and Challenges}
  
